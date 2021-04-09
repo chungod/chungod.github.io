@@ -88,12 +88,12 @@
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesng5oej20zk0m87d4.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipex2cdtbj20zk0m8x6p.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
         </ul>
       </div>
     </header>
@@ -115,6 +115,45 @@
         <div id="main" class="pjax">
           
   <div class="index wrap">
+    <h2 class="divider">Post List</h2>
+    <div class="segments posts">
+        
+<article class="item">
+  <div class="cover">
+    <a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" itemprop="url" title="Untitled"><img data-src="https://tva3.sinaimg.cn/mw690/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></a>
+  </div>
+  <div class="info">
+    
+<div class="meta">
+  <span class="item" title="Created: 2021-04-09 10:39:25">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <time itemprop="dateCreated datePublished" datetime="2021-04-09T10:39:25+08:00">2021-04-09</time>
+  </span>
+</div>
+
+    <h3><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" itemprop="url" title="Untitled">Untitled</a></h3>
+    <div class="excerpt">
+        # 内存取证
+# volatility 使用：
+# 获取内存镜像的摘要信息
+1volatility -f mem.raw imageinfo
+
+判断系统版本应该是 Win7SP1x64
+
+# 查看进程信息
+pslist 可以直接列出运行的进程，如果进程已经结束，会在 Exit 列显示日期和时间，表明进程已经结束
+1volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 pslist
+
+# 查看隐藏进程
+12volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 pstreevolatility -f...
+    </div>
+    <a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" itemprop="url" title="Untitled" class="btn">more...</a>
+  </div>
+</article>
+
+    </div>
 
   </div>
 
@@ -142,6 +181,12 @@
 </div>
 
 <nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">1</span>
+        <span class="name">posts</span>
+      </a>
+    </div>
 </nav>
 
 <div class="social">
@@ -189,6 +234,15 @@
 <div class="rpost pjax">
   <h2>Random Posts</h2>
   <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="Untitled">Untitled</a></span>
+  </li>
+
   </ul>
 </div>
 <div>
