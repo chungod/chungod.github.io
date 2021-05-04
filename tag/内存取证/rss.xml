@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>go-forward • Posts by &#34;内存取证&#34; tag</title>
+        <link>http://chungod.github.io</link>
+        <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 09 Apr 2021 17:14:41 +0800</pubDate>
+        <lastBuildDate>Fri, 09 Apr 2021 17:14:41 +0800</lastBuildDate>
+        <category>内存取证</category>
+        <category>Windows内核提权</category>
+        <item>
+            <guid isPermalink="true">http://chungod.github.io/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</guid>
+            <title>内存取证</title>
+            <link>http://chungod.github.io/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</link>
+            <category>内存取证</category>
+            <pubDate>Fri, 09 Apr 2021 17:14:41 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;内存取证&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存取证&#34;&gt;#&lt;/a&gt; &lt;strong&gt;内存取证&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;volatility-使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#volatility-使用&#34;&gt;#&lt;/a&gt; &lt;strong&gt;volatility 使用：&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3 id=&#34;获取内存镜像的摘要信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取内存镜像的摘要信息&#34;&gt;#&lt;/a&gt; &lt;strong&gt;获取内存镜像的摘要信息&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw imageinfo&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102135222699.png&#34; alt=&#34;image-20201102135222699&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;判断系统版本应该是 Win7SP1x64&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;查看进程信息&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看进程信息&#34;&gt;#&lt;/a&gt; &lt;strong&gt;查看进程信息&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;pslist 可以直接列出运行的进程，如果进程已经结束，会在 Exit 列显示日期和时间，表明进程已经结束&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 pslist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102141316628.png&#34; alt=&#34;image-20201102141316628&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;查看隐藏进程&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#查看隐藏进程&#34;&gt;#&lt;/a&gt; &lt;strong&gt;查看隐藏进程&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 pstree&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 psxview&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102154603111.png&#34; alt=&#34;image-20201102154603111&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;列举缓存在内存的注册表&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#列举缓存在内存的注册表&#34;&gt;#&lt;/a&gt; &lt;strong&gt;列举缓存在内存的注册表&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 hivelist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102150810232.png&#34; alt=&#34;image-20201102150810232&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提取主机名&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取主机名&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取主机名&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 printkey -K &amp;quot;ControlSet001\Control\ComputerName\ComputerName&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201115091150119.png&#34; alt=&#34;image-20201115091150119&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提取自启动项&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取自启动项&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取自启动项&lt;/strong&gt;&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201115091434803.png&#34; alt=&#34;image-20201115091434803&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;提取内存中保留的 cmd 命令使用情况&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f name --profile&amp;#x3D;WinXPSP2x86 cmdscan&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;获取到当时的网络连接情况&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f name --profile&amp;#x3D;WinXPSP2x86 netscan&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;提取ip地址和主机名&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取ip地址和主机名&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取 ip 地址和主机名&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f name --profile&amp;#x3D;WinXPSP2x86 netscan | grep ESTABLISHED&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;userassist 键值包含系统或桌面执行文件的信息，如名称、路径、执行次数、最后一次执行时间等&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f name --profile&amp;#x3D;WinXPSP2x86 userassist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;获取sam表中的用户&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#获取sam表中的用户&#34;&gt;#&lt;/a&gt; &lt;strong&gt;获取 SAM 表中的用户 ：&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 printkey -K &amp;quot;SAM\Domains\Account\Users\Names&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102152225937.png&#34; alt=&#34;image-20201102152225937&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;显示每个进程的加载 dll 列表&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;Volatility -f name -profile &amp;#x3D; Win7SP0x86 dlllist&amp;gt; dlllist.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;扫描内存中的文件&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#扫描内存中的文件&#34;&gt;#&lt;/a&gt; &lt;strong&gt;扫描内存中的文件&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 filescan&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102151129039.png&#34; alt=&#34;image-20201102151129039&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;filescan 也可以结合 grep 命令来进行筛选，比如&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 filescan | grep &amp;quot;doc\|docx&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 filescan | grep &amp;quot;flag&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102151359619.png&#34; alt=&#34;image-20201102151359619&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201203173328344.png&#34; alt=&#34;image-20201203173328344&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;提取flag值&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取flag值&#34;&gt;#&lt;/a&gt; 提取 flag 值&lt;/h2&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 dumpfiles -Q 0x07f1b6c10 --dump-dir&amp;#x3D;.&amp;#x2F;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201203174024646.png&#34; alt=&#34;image-20201203174024646&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201203174048410.png&#34; alt=&#34;image-20201203174048410&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提取内存中保留的cmd命令使用情况&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取内存中保留的cmd命令使用情况&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取内存中保留的 cmd 命令使用情况&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 cmdline&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102151626278.png&#34; alt=&#34;image-20201102151626278&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提取出内存中记录的-当时正在运行的程序&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取出内存中记录的-当时正在运行的程序&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取出内存中记录的 当时正在运行的程序&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.vmem --profile&amp;#x3D;Win7SP1x64 userassist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102152650474.png&#34; alt=&#34;image-20201102152650474&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&#34;提取网络连接情况&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取网络连接情况&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取网络连接情况&lt;/strong&gt;&lt;/h2&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 netscan&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102153001736.png&#34; alt=&#34;image-20201102153001736&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提取ie浏览器历史&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取ie浏览器历史&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取 IE 浏览器历史&lt;/strong&gt;&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 iehistory&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;提取系统密码hashdump&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取系统密码hashdump&#34;&gt;#&lt;/a&gt; &lt;strong&gt;提取系统密码&lt;/strong&gt;（hashdump）&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;直接 hashdump&lt;/strong&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 hashdump&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102154219862.png&#34; alt=&#34;image-20201102154219862&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;注册表 system 的 virtual 地址&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SAM 的 virtual 地址&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102153454213.png&#34; alt=&#34;image-20201102153454213&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;dump 出来密码&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.vmem --profile&amp;#x3D;Win7SP1x64 hashdump -y （注册表 system 的 virtual 地址 ）-s （SAM 的 virtual 地址）&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.vmen --profile&amp;#x3D;Win7SP1x64 hashdump -y 0xfffff8a000024010 -s 0xfffff8a000867010&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;strong&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20201102153714379.png&#34; alt=&#34;image-20201102153714379&#34;&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;提取迁移后的进程编号&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取迁移后的进程编号&#34;&gt;#&lt;/a&gt; 提取迁移后的进程编号&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 malfind -p&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;提取开机自启项的virtual地址&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#提取开机自启项的virtual地址&#34;&gt;#&lt;/a&gt; 提取开机自启项的 Virtual 地址&lt;/h3&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 printkey -K &amp;quot;SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;volatility -f mem.raw --profile&amp;#x3D;Win7SP1x64 printkey -K &amp;quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Run&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>

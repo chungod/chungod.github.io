@@ -3,10 +3,12 @@
     <channel>
         <title>go-forward</title>
         <link>http://chungod.github.io</link>
-        <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们多多谅解</description>
+        <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
         <language>zh-CN</language>
         <pubDate>Wed, 21 Apr 2021 10:24:41 +0800</pubDate>
         <lastBuildDate>Wed, 21 Apr 2021 10:24:41 +0800</lastBuildDate>
+        <category>内存取证</category>
+        <category>Windows内核提权</category>
         <item>
             <guid isPermalink="true">http://chungod.github.io/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/</guid>
             <title>meterpreter学习笔记</title>
@@ -180,6 +182,7 @@
             <guid isPermalink="true">http://chungod.github.io/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/</guid>
             <title>Windows内核提权</title>
             <link>http://chungod.github.io/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/</link>
+            <category>Windows内核提权</category>
             <pubDate>Fri, 16 Apr 2021 00:00:00 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;windows内核提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#windows内核提权&#34;&gt;#&lt;/a&gt; Windows 内核提权&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Cve-2016-7269 低权限提权&lt;/strong&gt;&lt;/p&gt;
@@ -296,6 +299,7 @@
             <guid isPermalink="true">http://chungod.github.io/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</guid>
             <title>内存取证</title>
             <link>http://chungod.github.io/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</link>
+            <category>内存取证</category>
             <pubDate>Fri, 09 Apr 2021 17:14:41 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;内存取证&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存取证&#34;&gt;#&lt;/a&gt; &lt;strong&gt;内存取证&lt;/strong&gt;&lt;/h1&gt;
 &lt;h2 id=&#34;volatility-使用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#volatility-使用&#34;&gt;#&lt;/a&gt; &lt;strong&gt;volatility 使用：&lt;/strong&gt;&lt;/h2&gt;
