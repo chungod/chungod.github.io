@@ -4,10 +4,10 @@
     <title>go-forward • Posts by &#34;windows内核提权&#34; tag</title>
     <link href="http://chungod.github.io" />
     <updated>2021-04-15T16:00:00.000Z</updated>
-    <category term="Linux提权" />
     <category term="Windows内核提权" />
-    <category term="paramiko模块介绍" />
+    <category term="Linux提权" />
     <category term="php危险函数" />
+    <category term="paramiko模块介绍" />
     <category term="内存取证" />
     <category term="meterpreter学习笔记" />
     <category term="upload-labs通关记录" />
@@ -32,9 +32,9 @@
 &lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163856952.png&#34; alt=&#34;image-20210320163856952&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163912440.png&#34; alt=&#34;image-20210320163757983&#34;&gt;&lt;/p&gt;
 &lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;利用run post&amp;#x2F;multi&amp;#x2F;recon&amp;#x2F;local_exploit_suggester 查看可利用模块&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320165555084.png&#34; alt=&#34;image-20210320164413649&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320164413649.png&#34; alt=&#34;image-20210320165533159&#34;&gt;&lt;/p&gt;
-&lt;p&gt;获得最高 shell&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320165555084.png&#34; alt=&#34;image-20210320164413649&#34;&gt;&lt;/p&gt;
+&lt;p&gt;获得 windows 高权限&lt;/p&gt;
 &lt;h2 id=&#34;扩展方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#扩展方法&#34;&gt;#&lt;/a&gt; 扩展方法&lt;/h2&gt;
 &lt;h3 id=&#34;令牌提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#令牌提权&#34;&gt;#&lt;/a&gt; 令牌提权&lt;/h3&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320171633846.png&#34; alt=&#34;image-20210320171633846&#34;&gt;&lt;/p&gt;
