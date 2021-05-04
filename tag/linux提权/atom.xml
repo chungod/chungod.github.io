@@ -4,12 +4,13 @@
     <title>go-forward • Posts by &#34;linux提权&#34; tag</title>
     <link href="http://chungod.github.io" />
     <updated>2021-04-10T02:24:41.000Z</updated>
-    <category term="Windows内核提权" />
     <category term="Linux提权" />
+    <category term="Windows内核提权" />
+    <category term="Paramiko模块利用" />
+    <category term="php危险函数" />
     <category term="内存取证" />
     <category term="meterpreter学习笔记" />
     <category term="upload-labs通关记录" />
-    <category term="php危险函数" />
     <entry>
         <id>http://chungod.github.io/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</id>
         <title>Linux提权</title>
