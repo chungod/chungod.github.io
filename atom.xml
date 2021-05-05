@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://chungod.github.io</id>
-    <title>go-forward</title>
+    <title>Go Forward</title>
     <link href="http://chungod.github.io" />
     <updated>2021-05-05T07:17:48.000Z</updated>
     <category term="Windows内核提权" />
