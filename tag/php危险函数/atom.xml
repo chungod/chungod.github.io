@@ -6,10 +6,11 @@
     <updated>2021-05-04T04:34:41.000Z</updated>
     <category term="Windows内核提权" />
     <category term="Linux提权" />
-    <category term="php危险函数" />
     <category term="paramiko模块介绍" />
+    <category term="php危险函数" />
     <category term="内存取证" />
     <category term="meterpreter学习笔记" />
+    <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
     <entry>
         <id>http://chungod.github.io/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/</id>
