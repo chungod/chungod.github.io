@@ -7,10 +7,10 @@
         <language>zh-CN</language>
         <pubDate>Fri, 09 Apr 2021 17:14:41 +0800</pubDate>
         <lastBuildDate>Fri, 09 Apr 2021 17:14:41 +0800</lastBuildDate>
-        <category>Linux提权</category>
         <category>Windows内核提权</category>
-        <category>php危险函数</category>
+        <category>Linux提权</category>
         <category>paramiko模块介绍</category>
+        <category>php危险函数</category>
         <category>内存取证</category>
         <category>meterpreter学习笔记</category>
         <category>溯源取证总结</category>
