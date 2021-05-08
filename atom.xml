@@ -13,9 +13,9 @@
     <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
     <entry>
-        <id>http://chungod.github.io/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/</id>
+        <id>http://chungod.github.io/2021/05/05/%E6%B8%97%E9%80%8F/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/</id>
         <title>溯源取证总结</title>
-        <link rel="alternate" href="http://chungod.github.io/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/"/>
+        <link rel="alternate" href="http://chungod.github.io/2021/05/05/%E6%B8%97%E9%80%8F/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;h2 id=&#34;溯源取证总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#溯源取证总结&#34;&gt;#&lt;/a&gt; 溯源取证总结&lt;/h2&gt;
 &lt;h4 id=&#34;类型&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#类型&#34;&gt;#&lt;/a&gt; 类型&lt;/h4&gt;
 &lt;ul&gt;
@@ -905,9 +905,9 @@
         <updated>2021-05-02T11:54:29.000Z</updated>
     </entry>
     <entry>
-        <id>http://chungod.github.io/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/</id>
+        <id>http://chungod.github.io/2021/05/01/%E6%B8%97%E9%80%8F/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/</id>
         <title>upload-labs通关记录</title>
-        <link rel="alternate" href="http://chungod.github.io/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/"/>
+        <link rel="alternate" href="http://chungod.github.io/2021/05/01/%E6%B8%97%E9%80%8F/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/"/>
         <content type="html">&lt;h1 id=&#34;upload-labs通关记录总计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#upload-labs通关记录总计&#34;&gt;#&lt;/a&gt; upload-labs 通关记录总计&lt;/h1&gt;
 &lt;h2 id=&#34;pass-01前端绕过&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#pass-01前端绕过&#34;&gt;#&lt;/a&gt; Pass-01 (前端绕过)&lt;/h2&gt;
 &lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210306140038674.png&#34; alt=&#34;image-20210306140038674&#34;&gt;&lt;/p&gt;
@@ -1065,9 +1065,9 @@
         <updated>2021-05-01T15:24:41.000Z</updated>
     </entry>
     <entry>
-        <id>http://chungod.github.io/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/</id>
+        <id>http://chungod.github.io/2021/04/21/%E6%B8%97%E9%80%8F/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/</id>
         <title>meterpreter学习笔记</title>
-        <link rel="alternate" href="http://chungod.github.io/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/"/>
+        <link rel="alternate" href="http://chungod.github.io/2021/04/21/%E6%B8%97%E9%80%8F/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/"/>
         <content type="html">&lt;h2 id=&#34;meterpreter学习笔记总结&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#meterpreter学习笔记总结&#34;&gt;#&lt;/a&gt; meterpreter 学习笔记总结&lt;/h2&gt;
 &lt;h2 id=&#34;系统命令&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#系统命令&#34;&gt;#&lt;/a&gt; 系统命令&lt;/h2&gt;
 &lt;figure class=&#34;highlight plain&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;15&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;background # 将当前会话放置后台&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sessions # sessions –h 查看帮助&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sessions -i &amp;lt;ID 值&amp;gt; #进入会话 -k 杀死会话&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;bgrun &amp;#x2F; run # 执行已有的模块，输入 run 后按两下 tab，列出已有的脚本&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;info # 查看已有模块信息&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;getuid # 查看当前用户身份&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;getprivs # 查看当前用户具备的权限&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;getpid # 获取当前进程 ID(PID)&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;sysinfo # 查看目标机系统信息&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;irb # 开启 ruby 终端&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ps # 查看正在运行的进程&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;kill &amp;lt;PID 值&amp;gt; # 杀死指定 PID 进程&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;idletime # 查看目标机闲置时间&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;reboot &amp;#x2F; shutdown # 重启&amp;#x2F;关机&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;shell # 进入目标机 cmd shell&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
