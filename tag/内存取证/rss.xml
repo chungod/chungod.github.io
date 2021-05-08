@@ -7,18 +7,18 @@
         <language>zh-CN</language>
         <pubDate>Fri, 09 Apr 2021 17:14:41 +0800</pubDate>
         <lastBuildDate>Fri, 09 Apr 2021 17:14:41 +0800</lastBuildDate>
+        <category>Windows内核提权</category>
+        <category>Linux提权</category>
         <category>paramiko模块介绍</category>
         <category>php危险函数</category>
         <category>内存取证</category>
-        <category>Windows内核提权</category>
-        <category>Linux提权</category>
         <category>meterpreter学习笔记</category>
         <category>溯源取证总结</category>
         <category>upload-labs通关记录</category>
         <item>
-            <guid isPermalink="true">http://chungod.github.io/2021/04/09/test/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</guid>
+            <guid isPermalink="true">http://chungod.github.io/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</guid>
             <title>内存取证</title>
-            <link>http://chungod.github.io/2021/04/09/test/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</link>
+            <link>http://chungod.github.io/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/</link>
             <category>内存取证</category>
             <pubDate>Fri, 09 Apr 2021 17:14:41 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;内存取证&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#内存取证&#34;&gt;#&lt;/a&gt; &lt;strong&gt;内存取证&lt;/strong&gt;&lt;/h1&gt;

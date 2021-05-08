@@ -4,18 +4,18 @@
     <title>Go Forward • Posts by &#34;windows内核提权&#34; tag</title>
     <link href="http://chungod.github.io" />
     <updated>2021-04-15T16:00:00.000Z</updated>
+    <category term="Windows内核提权" />
+    <category term="Linux提权" />
     <category term="paramiko模块介绍" />
     <category term="php危险函数" />
     <category term="内存取证" />
-    <category term="Windows内核提权" />
-    <category term="Linux提权" />
     <category term="meterpreter学习笔记" />
     <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
     <entry>
-        <id>http://chungod.github.io/2021/04/16/tiquan/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/</id>
+        <id>http://chungod.github.io/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/</id>
         <title>Windows内核提权</title>
-        <link rel="alternate" href="http://chungod.github.io/2021/04/16/tiquan/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/"/>
+        <link rel="alternate" href="http://chungod.github.io/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/"/>
         <content type="html">&lt;h2 id=&#34;windows内核提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#windows内核提权&#34;&gt;#&lt;/a&gt; Windows 内核提权&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Cve-2016-7269 低权限提权&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;第一种方法&lt;/p&gt;

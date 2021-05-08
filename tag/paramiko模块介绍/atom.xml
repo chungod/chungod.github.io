@@ -4,18 +4,18 @@
     <title>Go Forward • Posts by &#34;paramiko模块介绍&#34; tag</title>
     <link href="http://chungod.github.io" />
     <updated>2021-05-02T11:54:29.000Z</updated>
+    <category term="Windows内核提权" />
+    <category term="Linux提权" />
     <category term="paramiko模块介绍" />
     <category term="php危险函数" />
     <category term="内存取证" />
-    <category term="Windows内核提权" />
-    <category term="Linux提权" />
     <category term="meterpreter学习笔记" />
     <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
     <entry>
-        <id>http://chungod.github.io/2021/05/02/test/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</id>
+        <id>http://chungod.github.io/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</id>
         <title>paramiko模块介绍</title>
-        <link rel="alternate" href="http://chungod.github.io/2021/05/02/test/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/"/>
+        <link rel="alternate" href="http://chungod.github.io/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/"/>
         <content type="html">&lt;h2 id=&#34;paramiko模块介绍&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#paramiko模块介绍&#34;&gt;#&lt;/a&gt; Paramiko 模块介绍&lt;/h2&gt;
 &lt;p&gt;ssh 是一个协议，OpenSSH 是其中一个开源实现，paramiko 是 Python 的一个库，实现了 SSHv2 协议 (底层使用 cryptography)。&lt;/p&gt;
 &lt;p&gt;有了 Paramiko 以后，我们就可以在 Python 代码中直接使用 SSH 协议对远程服务器执行操作，而不是通过 ssh 命令对远程服务器进行操作。&lt;/p&gt;

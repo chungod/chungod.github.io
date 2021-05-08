@@ -7,18 +7,18 @@
         <language>zh-CN</language>
         <pubDate>Sat, 01 May 2021 23:24:41 +0800</pubDate>
         <lastBuildDate>Sat, 01 May 2021 23:24:41 +0800</lastBuildDate>
+        <category>Windows内核提权</category>
+        <category>Linux提权</category>
         <category>paramiko模块介绍</category>
         <category>php危险函数</category>
         <category>内存取证</category>
-        <category>Windows内核提权</category>
-        <category>Linux提权</category>
         <category>meterpreter学习笔记</category>
         <category>溯源取证总结</category>
         <category>upload-labs通关记录</category>
         <item>
-            <guid isPermalink="true">http://chungod.github.io/2021/05/01/attack/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/</guid>
+            <guid isPermalink="true">http://chungod.github.io/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/</guid>
             <title>upload-labs通关记录</title>
-            <link>http://chungod.github.io/2021/05/01/attack/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/</link>
+            <link>http://chungod.github.io/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/</link>
             <category>upload-labs通关记录</category>
             <pubDate>Sat, 01 May 2021 23:24:41 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;upload-labs通关记录总计&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#upload-labs通关记录总计&#34;&gt;#&lt;/a&gt; upload-labs 通关记录总计&lt;/h1&gt;
