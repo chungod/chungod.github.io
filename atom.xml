@@ -3,7 +3,7 @@
     <id>http://chungod.github.io</id>
     <title>Go Forward</title>
     <link href="http://chungod.github.io" />
-    <updated>2021-05-05T07:17:48.000Z</updated>
+    <updated>2021-05-08T06:52:50.922Z</updated>
     <category term="Windows内核提权" />
     <category term="Linux提权" />
     <category term="paramiko模块介绍" />
@@ -12,6 +12,16 @@
     <category term="meterpreter学习笔记" />
     <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
+    <entry>
+        <id>http://chungod.github.io/2021/05/08/%E5%9B%BE%E7%89%87/</id>
+        <title></title>
+        <link rel="alternate" href="http://chungod.github.io/2021/05/08/%E5%9B%BE%E7%89%87/"/>
+        <content type="html">&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/333-1620457805851.jpg&#34; alt=&#34;1111&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/222-1620457809421.jpg&#34; alt=&#34;333&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/1111.jpg&#34; alt=&#34;222&#34;&gt;&lt;/p&gt;
+</content>
+        <updated>2021-05-08T06:52:50.922Z</updated>
+    </entry>
     <entry>
         <id>http://chungod.github.io/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/</id>
         <title>溯源取证总结</title>
