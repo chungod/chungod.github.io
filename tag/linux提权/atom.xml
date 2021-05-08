@@ -13,9 +13,9 @@
     <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
     <entry>
-        <id>http://chungod.github.io/2021/04/10/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</id>
+        <id>http://chungod.github.io/2021/04/10/tiquan/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</id>
         <title>Linux提权</title>
-        <link rel="alternate" href="http://chungod.github.io/2021/04/10/%E6%8F%90%E6%9D%83/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/"/>
+        <link rel="alternate" href="http://chungod.github.io/2021/04/10/tiquan/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/"/>
         <content type="html">&lt;h2 id=&#34;linux提权笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux提权笔记&#34;&gt;#&lt;/a&gt; linux 提权笔记&lt;/h2&gt;
 &lt;h4 id=&#34;利用内核漏洞提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用内核漏洞提权&#34;&gt;#&lt;/a&gt;  &lt;code&gt;利用内核漏洞提权&lt;/code&gt;&lt;/h4&gt;
 &lt;p&gt;先开启一个可以交互的终端&lt;/p&gt;
