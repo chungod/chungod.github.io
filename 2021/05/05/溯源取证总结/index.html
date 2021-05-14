@@ -102,12 +102,12 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclx29mstj20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclip4jbpj20zk0m87cv.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeu1usa7j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giciundwu5j20zk0m8n9e.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclgrvbd6j20zk0m8qv5.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4lm9i7j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicit4jrvuj20zk0m8785.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclffsa1cj20zk0m811l.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -202,10 +202,10 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </tbody>
 </table>
 <h4 id="webshell排查"><a class="markdownIt-Anchor" href="#webshell排查">#</a> webshell 排查</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 整站打包用webshell扫描工具扫</span><br><span class="line">2. 利用Linux find命令查询木马</span><br></pre></td></tr></table></figure>
-<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /var/www/ -name &quot;*.php&quot; |xargs egrep &#x27;assert|phpspy|c99sh|milw0rm|eval|(gunerpress|</span><br><span class="line">(<span class="name">base64_decoolcode</span>|spider_bc|shell_exec|passthru|($_\POST[|eval</span><br><span class="line">(<span class="name">str_rot13</span>|.chr(|$&#123;<span class="string">&quot;_P|eval($_R|file_put_contents(.*$_|base64_decode</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i –r eval($_post /app/website/*</span><br></pre></td></tr></table></figure>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /app/website/ -type f|xargs grep eval($_post</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1. 整站打包用webshell扫描工具扫</span><br><span class="line">2. 利用Linux find命令查询木马</span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">find /var/www/ -name <span class="string">&quot;*.php&quot;</span> |xargs egrep &#x27;assert|phpspy|c<span class="number">99</span>sh|milw<span class="number">0</span>rm|eval|(<span class="name">gunerpress</span>|</span><br><span class="line">(<span class="name">base64_decoolcode</span>|spider_bc|shell_exec|passthru|($_\POST[|eval</span><br><span class="line">(<span class="name">str_rot13</span>|.chr(|$&#123;<span class="string">&quot;_P|eval($_R|file_put_contents(.*$_|base64_decode</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep -i –r eval($_post /app/website/*</span><br></pre></td></tr></table></figure>
+<figure class="highlight clojure"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find /app/website/ -type f|xargs grep eval($_post</span><br></pre></td></tr></table></figure>
 <h4 id="数据库排查"><a class="markdownIt-Anchor" href="#数据库排查">#</a> 数据库排查</h4>
 <p><code>mysql和mssql日志</code></p>
 <table>
@@ -254,7 +254,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">小总结</span><br><span class="line">1. mysql\lib\plugin目录的异常文件</span><br><span class="line"></span><br><span class="line">2. select * from mysql.func的异常</span><br><span class="line"></span><br><span class="line">3. mssql检查xp_cmdshell等存储过程</span><br><span class="line"></span><br><span class="line">4. 异常数据库登录</span><br><span class="line"></span><br><span class="line">5. 数据库用户弱口令</span><br><span class="line"></span><br><span class="line">6. mysql相关命令</span><br><span class="line">show global variables like &#39;%log%&#39;;</span><br><span class="line">show global variables like &#39;%gene%&#39;;</span><br><span class="line">show master status;</span><br><span class="line">systemmore &#x2F;mydata&#x2F;data&#x2F;stu18_slow.log;</span><br><span class="line">showbinary logs;</span><br><span class="line">showmaster logs;</span><br><span class="line">showbinlog events in &#39;mysql-bin.000011&#39;;</span><br><span class="line">show processlist;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">小总结</span><br><span class="line">1. mysql\lib\plugin目录的异常文件</span><br><span class="line"></span><br><span class="line">2. select * from mysql.func的异常</span><br><span class="line"></span><br><span class="line">3. mssql检查xp_cmdshell等存储过程</span><br><span class="line"></span><br><span class="line">4. 异常数据库登录</span><br><span class="line"></span><br><span class="line">5. 数据库用户弱口令</span><br><span class="line"></span><br><span class="line">6. mysql相关命令</span><br><span class="line">show global variables like &#x27;%log%&#x27;;</span><br><span class="line">show global variables like &#x27;%gene%&#x27;;</span><br><span class="line">show master status;</span><br><span class="line">systemmore /mydata/data/stu18_slow.log;</span><br><span class="line">showbinary logs;</span><br><span class="line">showmaster logs;</span><br><span class="line">showbinlog events in &#x27;mysql-bin.000011&#x27;;</span><br><span class="line">show processlist;</span><br></pre></td></tr></table></figure>
 <h2 id="linux应急响应"><a class="markdownIt-Anchor" href="#linux应急响应">#</a> Linux 应急响应</h2>
 <h4 id="文件"><a class="markdownIt-Anchor" href="#文件">#</a> 文件</h4>
 <table>
@@ -307,7 +307,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <p>这里附上一张图片</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210505103536118.png" alt="image-20210505103536118"></p>
 <p>补充</p>
-<figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/<span class="keyword">var</span>/log/wtmp 登录进入，退出，数据交换、关机和重启纪录，即last</span><br><span class="line">/<span class="keyword">var</span>/log/lastlog 文件记录用户最后登录的信息，即lastlog</span><br><span class="line">/<span class="keyword">var</span>/log/secure 记录登入系统存取数据的文件，如 pop3/ssh/telnet/ftp</span><br><span class="line">/<span class="keyword">var</span>/log/cron 与定时任务相关的日志信息，记录crontab命令是否被正确的执行</span><br><span class="line">/<span class="keyword">var</span>/log/message 系统启动后的信息和错误日志,包括整体系统信息</span><br><span class="line">/<span class="keyword">var</span>/log/apache2/access.log apache有关权限日志</span><br><span class="line">/<span class="keyword">var</span>/log/auth.log 包含系统授权信息，包括用户登录和使用的权限机制等</span><br><span class="line">/<span class="keyword">var</span>/log/userlog 记录所有等级用户信息的日志</span><br><span class="line">/<span class="keyword">var</span>/log/xferlog(vsftpd.log)记录Linux FTP日志</span><br><span class="line">/<span class="keyword">var</span>/log/secure 记录大多数应用输入的账号与密码，登录成功与否</span><br><span class="line">/<span class="keyword">var</span>/log/faillog 记录登录系统不成功的账号信息</span><br><span class="line">扩展（历史记录）</span><br><span class="line">history (cat /root/.bash_history)</span><br><span class="line">mysql-history (cat /root/.mysql_history)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/var/log/wtmp 登录进入，退出，数据交换、关机和重启纪录，即last</span><br><span class="line">/var/log/lastlog 文件记录用户最后登录的信息，即lastlog</span><br><span class="line">/var/log/secure 记录登入系统存取数据的文件，如 pop3/ssh/telnet/ftp</span><br><span class="line">/var/log/cron 与定时任务相关的日志信息，记录crontab命令是否被正确的执行</span><br><span class="line">/var/log/message 系统启动后的信息和错误日志,包括整体系统信息</span><br><span class="line">/var/log/apache2/access.log apache有关权限日志</span><br><span class="line">/var/log/auth.log 包含系统授权信息，包括用户登录和使用的权限机制等</span><br><span class="line">/var/log/userlog 记录所有等级用户信息的日志</span><br><span class="line">/var/log/xferlog(vsftpd.log)记录Linux FTP日志</span><br><span class="line">/var/log/secure 记录大多数应用输入的账号与密码，登录成功与否</span><br><span class="line">/var/log/faillog 记录登录系统不成功的账号信息</span><br><span class="line">扩展（历史记录）</span><br><span class="line">history (cat /root/.bash_history)</span><br><span class="line">mysql-history (cat /root/.mysql_history)</span><br></pre></td></tr></table></figure>
 <p>利用正则表达式筛选条件</p>
 <table>
 <thead>
@@ -557,13 +557,13 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </tr>
 </tbody>
 </table>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">misc 杂</span><br><span class="line">stat 命令查看文件或文件系统的状态时间等属性</span><br><span class="line">echo $PATH 查看环境变量</span><br><span class="line">&#x2F;rpm -Va &gt; rpm.log 校验所有的RPM软件包，查找丢失的文件</span><br><span class="line">kill -9 强制杀死进程</span><br><span class="line">chattr –i 取消锁定文件</span><br><span class="line">setfacl &#x2F; getfacl  ACL权限设置</span><br><span class="line">chmod 000 去执行权限</span><br><span class="line">strings &#x2F;usr&#x2F;bin&#x2F;.sshd | egrep &#39;[1-9]&#123;1,3&#125;.[1-9]&#123;1,3&#125;.&#39; ssh后门快速判断</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">misc 杂</span><br><span class="line">stat 命令查看文件或文件系统的状态时间等属性</span><br><span class="line">echo $PATH 查看环境变量</span><br><span class="line">/rpm -Va &gt; rpm.log 校验所有的RPM软件包，查找丢失的文件</span><br><span class="line">kill -9 强制杀死进程</span><br><span class="line">chattr –i 取消锁定文件</span><br><span class="line">setfacl / getfacl  ACL权限设置</span><br><span class="line">chmod 000 去执行权限</span><br><span class="line">strings /usr/bin/.sshd | egrep &#x27;[1-9]&#123;1,3&#125;.[1-9]&#123;1,3&#125;.&#x27; ssh后门快速判断</span><br></pre></td></tr></table></figure>
 <h2 id="windows取证"><a class="markdownIt-Anchor" href="#windows取证">#</a> Windows 取证</h2>
 <p>思维导图</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210505135434533.png" alt="image-20210505135434533"></p>
 <h4 id="文件-2"><a class="markdownIt-Anchor" href="#文件-2">#</a> 文件</h4>
 <p>分析文件路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">文件路径</span><br><span class="line">C:\Documents and Settings\Administrator\Recent</span><br><span class="line">C:\Documents and Settings\Default User\Recent</span><br><span class="line">%UserProfile%\Recent  文件日期、新增文件、可疑&#x2F;异常文件、最近使用文件、浏览器下载文件</span><br><span class="line">下载目录</span><br><span class="line">回收站文件</span><br><span class="line">程序临时文件</span><br><span class="line">历史文件记录</span><br><span class="line">应用程序打开历史</span><br><span class="line">搜索历史</span><br><span class="line">快捷方式（LNK）</span><br><span class="line">c:\windows\temp\</span><br><span class="line">Window 2003 C:\Documents and Settings</span><br><span class="line">Window 2008R2 C:\Users\</span><br><span class="line">时间排序文件</span><br><span class="line">findstr &#x2F;s &#x2F;m &#x2F;I “UploadFiles” *.log  查看指定时间范围包括上传文件夹的访问请求</span><br><span class="line">findstr &#x2F;s &#x2F;m &#x2F;I “x.js” *.asp 关键信息是x.js</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">文件路径</span><br><span class="line">C:\Documents and Settings\Administrator\Recent</span><br><span class="line">C:\Documents and Settings\Default User\Recent</span><br><span class="line">%UserProfile%\Recent  文件日期、新增文件、可疑/异常文件、最近使用文件、浏览器下载文件</span><br><span class="line">下载目录</span><br><span class="line">回收站文件</span><br><span class="line">程序临时文件</span><br><span class="line">历史文件记录</span><br><span class="line">应用程序打开历史</span><br><span class="line">搜索历史</span><br><span class="line">快捷方式（LNK）</span><br><span class="line">c:\windows\temp\</span><br><span class="line">Window 2003 C:\Documents and Settings</span><br><span class="line">Window 2008R2 C:\Users\</span><br><span class="line">时间排序文件</span><br><span class="line">findstr /s /m /I “UploadFiles” *.log  查看指定时间范围包括上传文件夹的访问请求</span><br><span class="line">findstr /s /m /I “x.js” *.asp 关键信息是x.js</span><br></pre></td></tr></table></figure>
 <h4 id="日志-2"><a class="markdownIt-Anchor" href="#日志-2">#</a> 日志</h4>
 <table>
 <thead>
@@ -743,9 +743,9 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </tbody>
 </table>
 <h4 id="账号"><a class="markdownIt-Anchor" href="#账号">#</a> 账号</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">新增用户</span><br><span class="line">隐藏&#x2F;克隆帐号</span><br><span class="line">管理员对应键值</span><br><span class="line">lusrmgr.msc 查看账户变化</span><br><span class="line">net user 列出当前登录账户</span><br><span class="line">wmic UserAccount get 列出当前系统所有账户</span><br><span class="line">net localgroup administrators 列出管理员组用户</span><br><span class="line">注册表-管理员键值：HKEY_LOCAL_MACHINE&#x2F;SAM&#x2F;SAM&#x2F;Domains&#x2F;Account&#x2F;Users</span><br><span class="line">D盾查杀</span><br><span class="line">日志-登录时间&#x2F;用户名</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">新增用户</span><br><span class="line">隐藏/克隆帐号</span><br><span class="line">管理员对应键值</span><br><span class="line">lusrmgr.msc 查看账户变化</span><br><span class="line">net user 列出当前登录账户</span><br><span class="line">wmic UserAccount get 列出当前系统所有账户</span><br><span class="line">net localgroup administrators 列出管理员组用户</span><br><span class="line">注册表-管理员键值：HKEY_LOCAL_MACHINE/SAM/SAM/Domains/Account/Users</span><br><span class="line">D盾查杀</span><br><span class="line">日志-登录时间/用户名</span><br></pre></td></tr></table></figure>
 <h4 id="进程-2"><a class="markdownIt-Anchor" href="#进程-2">#</a> 进程</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tasklist &#x2F;svc | findstr pid  查看服务进行</span><br><span class="line">netstat -ano</span><br><span class="line">wmic process | find &quot;Proccess Id&quot; &gt; proc.csv</span><br><span class="line">powershell: Get-WmiObject -Class Win32_Process</span><br><span class="line">msinfo32 查看自己电脑配置详情</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tasklist /svc | findstr pid  查看服务进行</span><br><span class="line">netstat -ano</span><br><span class="line">wmic process | find &quot;Proccess Id&quot; &gt; proc.csv</span><br><span class="line">powershell: Get-WmiObject -Class Win32_Process</span><br><span class="line">msinfo32 查看自己电脑配置详情</span><br></pre></td></tr></table></figure>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">扩展powershell命令</span><br><span class="line">wmic <span class="keyword">process</span> get caption,commandline /value</span><br><span class="line">wmic <span class="keyword">process</span> <span class="built_in">where</span> caption=”svchost.exe” get caption,commandline /value</span><br><span class="line">wmic service get name,pathname,processid,startname,status,state /value</span><br><span class="line">wmic <span class="keyword">process</span> get CreationDate,name,processid,commandline,ExecutablePath /value</span><br><span class="line">wmic <span class="keyword">process</span> get name,processid,executablepath| findstr <span class="string">&quot;7766&quot;</span></span><br></pre></td></tr></table></figure>
 <h4 id="端口"><a class="markdownIt-Anchor" href="#端口">#</a> 端口</h4>
 <p><code>netstat -ano</code></p>
@@ -809,10 +809,10 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </table>
 <h4 id="自启动-2"><a class="markdownIt-Anchor" href="#自启动-2">#</a> 自启动</h4>
 <p>注册表位置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Runonce</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\Explorer\Run</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce</span><br><span class="line">HKLM\Software\Microsoft\Windows\CurrentVersion\RunonceEx</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(ProfilePath)\Start Menu\Programs\Startup 启动项</span><br><span class="line">shell:startup  查看开机自启</span><br><span class="line">msconfig 启动选项卡</span><br><span class="line">gpedit.msc 组策略编辑器</span><br><span class="line">开始&gt;所有程序&gt;启动</span><br><span class="line">wmic startup list full</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Runonce</span><br><span class="line">HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\policies\Explorer\Run</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run</span><br><span class="line">HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce</span><br><span class="line">HKLM\Software\Microsoft\Windows\CurrentVersion\RunonceEx</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(ProfilePath)\Start Menu\Programs\Startup 启动项</span><br><span class="line">shell:startup  查看开机自启</span><br><span class="line">msconfig 启动选项卡</span><br><span class="line">gpedit.msc 组策略编辑器</span><br><span class="line">开始&gt;所有程序&gt;启动</span><br><span class="line">wmic startup list full</span><br></pre></td></tr></table></figure>
 <h4 id="计划任务-2"><a class="markdownIt-Anchor" href="#计划任务-2">#</a> 计划任务</h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\Tasks\</span><br><span class="line">C:\Windows\SysWOW64\Tasks\</span><br><span class="line">C:\Windows\tasks\</span><br><span class="line">schtasks</span><br><span class="line">taskschd.msc</span><br><span class="line">at</span><br><span class="line">开始-设置-控制面板-任务计划</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C:\Windows\System32\Tasks\</span><br><span class="line">C:\Windows\SysWOW64\Tasks\</span><br><span class="line">C:\Windows\tasks\</span><br><span class="line">schtasks</span><br><span class="line">taskschd.msc</span><br><span class="line">at</span><br><span class="line">开始-设置-控制面板-任务计划</span><br></pre></td></tr></table></figure>
 <h4 id="注册表"><a class="markdownIt-Anchor" href="#注册表">#</a> 注册表</h4>
 <table>
 <thead>
@@ -946,7 +946,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item left">
       
 
-  <a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclimtf7dj20zk0m8qav.jpg" title="php危险函数">
+  <a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu7txpzj20zk0m81kx.jpg" title="php危险函数">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>php危险函数</h3>
@@ -1054,24 +1054,6 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" title="Linux提权">Linux提权</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
     <span><a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" title="溯源取证总结">溯源取证总结</a></span>
   </li>
 
@@ -1081,7 +1063,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
+    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
   </li>
 
       
@@ -1090,16 +1072,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" title="php危险函数">php危险函数</a></span>
+    <span><a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" title="Linux提权">Linux提权</a></span>
   </li>
 
       
@@ -1117,7 +1090,34 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
+    <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" title="php危险函数">php危险函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
   </li>
 
   </ul>
@@ -1142,13 +1142,13 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">62k 字</span>
+    <span title="站点总字数">60k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">55 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

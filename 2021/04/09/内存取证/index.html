@@ -102,12 +102,12 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclh3brzpj20zk0m8ann.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexw3o58j20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclize41wj20zk0m87gk.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclwrdwyaj20zk0m8are.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclimtf7dj20zk0m8qav.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1giclflwv2aj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxfdlttj20zk0m8npd.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciusoyjnj219g0u0x56.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicm0n457cj20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicli3sbvtj20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -154,66 +154,66 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <h1 id="内存取证"><a class="markdownIt-Anchor" href="#内存取证">#</a> <strong>内存取证</strong></h1>
 <h2 id="volatility-使用"><a class="markdownIt-Anchor" href="#volatility-使用">#</a> <strong>volatility 使用：</strong></h2>
 <h3 id="获取内存镜像的摘要信息"><a class="markdownIt-Anchor" href="#获取内存镜像的摘要信息">#</a> <strong>获取内存镜像的摘要信息</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw imageinfo</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw imageinfo</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102135222699.png" alt="image-20201102135222699"></strong></p>
 <blockquote>
 <p><strong>判断系统版本应该是 Win7SP1x64</strong></p>
 </blockquote>
 <h3 id="查看进程信息"><a class="markdownIt-Anchor" href="#查看进程信息">#</a> <strong>查看进程信息</strong></h3>
 <p><strong>pslist 可以直接列出运行的进程，如果进程已经结束，会在 Exit 列显示日期和时间，表明进程已经结束</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 pslist</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 pslist</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102141316628.png" alt="image-20201102141316628"></strong></p>
 <h3 id="查看隐藏进程"><a class="markdownIt-Anchor" href="#查看隐藏进程">#</a> <strong>查看隐藏进程</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 pstree</span><br><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 psxview</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 pstree</span><br><span class="line">volatility -f mem.raw --profile=Win7SP1x64 psxview</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102154603111.png" alt="image-20201102154603111"></strong></p>
 <h3 id="列举缓存在内存的注册表"><a class="markdownIt-Anchor" href="#列举缓存在内存的注册表">#</a> <strong>列举缓存在内存的注册表</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 hivelist</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 hivelist</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102150810232.png" alt="image-20201102150810232"></strong></p>
 <h3 id="提取主机名"><a class="markdownIt-Anchor" href="#提取主机名">#</a> <strong>提取主机名</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 printkey -K &quot;ControlSet001\Control\ComputerName\ComputerName&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 printkey -K &quot;ControlSet001\Control\ComputerName\ComputerName&quot;</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201115091150119.png" alt="image-20201115091150119"></strong></p>
 <h3 id="提取自启动项"><a class="markdownIt-Anchor" href="#提取自启动项">#</a> <strong>提取自启动项</strong></h3>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201115091434803.png" alt="image-20201115091434803"></strong></p>
 <p><strong>提取内存中保留的 cmd 命令使用情况</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile&#x3D;WinXPSP2x86 cmdscan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile=WinXPSP2x86 cmdscan</span><br></pre></td></tr></table></figure>
 <p><strong>获取到当时的网络连接情况</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile&#x3D;WinXPSP2x86 netscan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile=WinXPSP2x86 netscan</span><br></pre></td></tr></table></figure>
 <h3 id="提取ip地址和主机名"><a class="markdownIt-Anchor" href="#提取ip地址和主机名">#</a> <strong>提取 ip 地址和主机名</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile&#x3D;WinXPSP2x86 netscan | grep ESTABLISHED</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile=WinXPSP2x86 netscan | grep ESTABLISHED</span><br></pre></td></tr></table></figure>
 <p><strong>userassist 键值包含系统或桌面执行文件的信息，如名称、路径、执行次数、最后一次执行时间等</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile&#x3D;WinXPSP2x86 userassist</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f name --profile=WinXPSP2x86 userassist</span><br></pre></td></tr></table></figure>
 <h3 id="获取sam表中的用户"><a class="markdownIt-Anchor" href="#获取sam表中的用户">#</a> <strong>获取 SAM 表中的用户 ：</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 printkey -K &quot;SAM\Domains\Account\Users\Names&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 printkey -K &quot;SAM\Domains\Account\Users\Names&quot;</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102152225937.png" alt="image-20201102152225937"></strong></p>
 <p><strong>显示每个进程的加载 dll 列表</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Volatility -f name -profile &#x3D; Win7SP0x86 dlllist&gt; dlllist.txt</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Volatility -f name -profile = Win7SP0x86 dlllist&gt; dlllist.txt</span><br></pre></td></tr></table></figure>
 <h3 id="扫描内存中的文件"><a class="markdownIt-Anchor" href="#扫描内存中的文件">#</a> <strong>扫描内存中的文件</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 filescan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 filescan</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102151129039.png" alt="image-20201102151129039"></strong></p>
 <ul>
 <li><strong>filescan 也可以结合 grep 命令来进行筛选，比如</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 filescan | grep &quot;doc\|docx&quot;</span><br><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 filescan | grep &quot;flag&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 filescan | grep &quot;doc\|docx&quot;</span><br><span class="line">volatility -f mem.raw --profile=Win7SP1x64 filescan | grep &quot;flag&quot;</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102151359619.png" alt="image-20201102151359619"></strong></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201203173328344.png" alt="image-20201203173328344"></p>
 <h2 id="提取flag值"><a class="markdownIt-Anchor" href="#提取flag值">#</a> 提取 flag 值</h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 dumpfiles -Q 0x07f1b6c10 --dump-dir&#x3D;.&#x2F;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 dumpfiles -Q 0x07f1b6c10 --dump-dir=./</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201203174024646.png" alt="image-20201203174024646"></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201203174048410.png" alt="image-20201203174048410"></p>
 <h3 id="提取内存中保留的cmd命令使用情况"><a class="markdownIt-Anchor" href="#提取内存中保留的cmd命令使用情况">#</a> <strong>提取内存中保留的 cmd 命令使用情况</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 cmdline</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 cmdline</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102151626278.png" alt="image-20201102151626278"></strong></p>
 <h3 id="提取出内存中记录的-当时正在运行的程序"><a class="markdownIt-Anchor" href="#提取出内存中记录的-当时正在运行的程序">#</a> <strong>提取出内存中记录的 当时正在运行的程序</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.vmem --profile&#x3D;Win7SP1x64 userassist</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.vmem --profile=Win7SP1x64 userassist</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102152650474.png" alt="image-20201102152650474"></strong></p>
 <h2 id="提取网络连接情况"><a class="markdownIt-Anchor" href="#提取网络连接情况">#</a> <strong>提取网络连接情况</strong></h2>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 netscan</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 netscan</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102153001736.png" alt="image-20201102153001736"></strong></p>
 <h3 id="提取ie浏览器历史"><a class="markdownIt-Anchor" href="#提取ie浏览器历史">#</a> <strong>提取 IE 浏览器历史</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 iehistory</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 iehistory</span><br></pre></td></tr></table></figure>
 <h3 id="提取系统密码hashdump"><a class="markdownIt-Anchor" href="#提取系统密码hashdump">#</a> <strong>提取系统密码</strong>（hashdump）</h3>
 <p><strong>直接 hashdump</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 hashdump</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 hashdump</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102154219862.png" alt="image-20201102154219862"></strong></p>
 <ul>
 <li><strong>注册表 system 的 virtual 地址</strong></li>
@@ -223,12 +223,12 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <ul>
 <li><strong>dump 出来密码</strong></li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.vmem --profile&#x3D;Win7SP1x64 hashdump -y （注册表 system 的 virtual 地址 ）-s （SAM 的 virtual 地址）</span><br><span class="line">volatility -f mem.vmen --profile&#x3D;Win7SP1x64 hashdump -y 0xfffff8a000024010 -s 0xfffff8a000867010</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.vmem --profile=Win7SP1x64 hashdump -y （注册表 system 的 virtual 地址 ）-s （SAM 的 virtual 地址）</span><br><span class="line">volatility -f mem.vmen --profile=Win7SP1x64 hashdump -y 0xfffff8a000024010 -s 0xfffff8a000867010</span><br></pre></td></tr></table></figure>
 <p><strong><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20201102153714379.png" alt="image-20201102153714379"></strong></p>
 <h3 id="提取迁移后的进程编号"><a class="markdownIt-Anchor" href="#提取迁移后的进程编号">#</a> 提取迁移后的进程编号</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 malfind -p</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 malfind -p</span><br></pre></td></tr></table></figure>
 <h3 id="提取开机自启项的virtual地址"><a class="markdownIt-Anchor" href="#提取开机自启项的virtual地址">#</a> 提取开机自启项的 Virtual 地址</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 printkey -K &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce&quot;</span><br><span class="line">volatility -f mem.raw --profile&#x3D;Win7SP1x64 printkey -K &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">volatility -f mem.raw --profile=Win7SP1x64 printkey -K &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\RunOnce&quot;</span><br><span class="line">volatility -f mem.raw --profile=Win7SP1x64 printkey -K &quot;SOFTWARE\Microsoft\Windows\CurrentVersion\Run&quot;</span><br></pre></td></tr></table></figure>
 
       <div class="tags">
           <a href="/tags/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" rel="tag"><i class="ic i-tag"></i> 内存取证</a>
@@ -295,7 +295,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item right">
       
 
-  <a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giclhpw3lwj20zk0m8gvw.jpg" title="Linux提权">
+  <a href="/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexe4oykj20zk0m87ji.jpg" title="Linux提权">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>Linux提权</h3>
@@ -410,16 +410,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
+    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
   </li>
 
       
@@ -437,7 +428,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
+    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
   </li>
 
       
@@ -447,6 +438,15 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </div>
 
     <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
   </li>
 
       
@@ -489,13 +489,13 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">62k 字</span>
+    <span title="站点总字数">60k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">55 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>

