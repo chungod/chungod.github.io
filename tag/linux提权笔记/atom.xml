@@ -3,10 +3,13 @@
     <id>https://chungod.github.io</id>
     <title>Go Forward • Posts by &#34;linux提权笔记&#34; tag</title>
     <link href="https://chungod.github.io" />
-    <updated>2021-08-19T06:28:41.000Z</updated>
+    <updated>2021-07-18T06:28:41.000Z</updated>
+    <category term="Coablt strike总结" />
+    <category term="Gear_Of_War靶场笔记" />
     <category term="Linux反弹shell多种姿态" />
     <category term="Linux提权笔记" />
     <category term="Windows内核提权" />
+    <category term="impacket脚本利用" />
     <category term="paramiko模块介绍" />
     <category term="php危险函数" />
     <category term="内存取证" />
@@ -14,9 +17,9 @@
     <category term="溯源取证总结" />
     <category term="upload-labs通关记录" />
     <entry>
-        <id>https://chungod.github.io/2021/08/19/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</id>
+        <id>https://chungod.github.io/2021/07/18/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</id>
         <title>Linux提权笔记</title>
-        <link rel="alternate" href="https://chungod.github.io/2021/08/19/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/"/>
+        <link rel="alternate" href="https://chungod.github.io/2021/07/18/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/"/>
         <content type="html">&lt;h2 id=&#34;linux提权笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux提权笔记&#34;&gt;#&lt;/a&gt; linux 提权笔记&lt;/h2&gt;
 &lt;h4 id=&#34;利用内核漏洞提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用内核漏洞提权&#34;&gt;#&lt;/a&gt;  &lt;code&gt;利用内核漏洞提权&lt;/code&gt;&lt;/h4&gt;
 &lt;p&gt;先开启一个可以交互的终端&lt;/p&gt;
@@ -95,6 +98,6 @@
 &lt;p&gt;防范：crontab 任务千万不要写到 /etc/crontab 文件里。通过 crontab -e 去创建，让他写到默认的 /var/spool/cron 下；创建任务时，避免使用 root 去创建任务，若用 root 创建任务，注意设置权限，避免 root 权限执行任务。&lt;/p&gt;
 </content>
         <category term="Linux提权笔记" />
-        <updated>2021-08-19T06:28:41.000Z</updated>
+        <updated>2021-07-18T06:28:41.000Z</updated>
     </entry>
 </feed>

