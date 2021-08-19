@@ -1,23 +1,28 @@
 <?xml version="1.0"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://chungod.github.io</id>
-    <title>Go Forward • Posts by &#34;linux提权&#34; tag</title>
-    <link href="https://chungod.github.io" />
-    <updated>2021-04-10T02:25:41.000Z</updated>
-    <category term="Linux反弹shell多种姿态" />
-    <category term="Linux提权" />
-    <category term="Windows内核提权" />
-    <category term="paramiko模块介绍" />
-    <category term="php危险函数" />
-    <category term="内存取证" />
-    <category term="meterpreter学习笔记" />
-    <category term="溯源取证总结" />
-    <category term="upload-labs通关记录" />
-    <entry>
-        <id>https://chungod.github.io/2021/04/10/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</id>
-        <title>Linux提权</title>
-        <link rel="alternate" href="https://chungod.github.io/2021/04/10/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/"/>
-        <content type="html">&lt;h2 id=&#34;linux提权笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux提权笔记&#34;&gt;#&lt;/a&gt; linux 提权笔记&lt;/h2&gt;
+<rss version="2.0">
+    <channel>
+        <title>Go Forward • Posts by &#34;linux提权笔记&#34; tag</title>
+        <link>https://chungod.github.io</link>
+        <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
+        <language>zh-CN</language>
+        <pubDate>Thu, 19 Aug 2021 14:28:41 +0800</pubDate>
+        <lastBuildDate>Thu, 19 Aug 2021 14:28:41 +0800</lastBuildDate>
+        <category>Linux反弹shell多种姿态</category>
+        <category>Linux提权笔记</category>
+        <category>Windows内核提权</category>
+        <category>paramiko模块介绍</category>
+        <category>php危险函数</category>
+        <category>内存取证</category>
+        <category>meterpreter学习笔记</category>
+        <category>溯源取证总结</category>
+        <category>upload-labs通关记录</category>
+        <item>
+            <guid isPermalink="true">https://chungod.github.io/2021/08/19/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</guid>
+            <title>Linux提权笔记</title>
+            <link>https://chungod.github.io/2021/08/19/Linux%E6%8F%90%E6%9D%83%E7%AC%94%E8%AE%B0/</link>
+            <category>Linux提权笔记</category>
+            <pubDate>Thu, 19 Aug 2021 14:28:41 +0800</pubDate>
+            <description><![CDATA[ &lt;h2 id=&#34;linux提权笔记&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#linux提权笔记&#34;&gt;#&lt;/a&gt; linux 提权笔记&lt;/h2&gt;
 &lt;h4 id=&#34;利用内核漏洞提权&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#利用内核漏洞提权&#34;&gt;#&lt;/a&gt;  &lt;code&gt;利用内核漏洞提权&lt;/code&gt;&lt;/h4&gt;
 &lt;p&gt;先开启一个可以交互的终端&lt;/p&gt;
 &lt;figure class=&#34;highlight plaintext&#34;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&#34;gutter&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&#34;code&#34;&gt;&lt;pre&gt;&lt;span class=&#34;line&#34;&gt;python -c &amp;#x27;import pty;pty.spawn(&amp;quot;/bin/bash&amp;quot;)&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;python -c &amp;#x27;import pty;pty.spawn(&amp;quot;/bin/sh&amp;quot;)&amp;#x27;&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;/bin/bash -i&lt;/span&gt;&lt;br&gt;&lt;span class=&#34;line&#34;&gt;echo os.system(&amp;quot;/bin/bash&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -93,8 +98,7 @@
 &lt;p&gt;cat /etc/crontab&lt;/p&gt;
 &lt;p&gt;模拟一下&lt;img data-src=&#34;https://gitee.com/chungod/picture/raw/master/image/image-20210410101229024.png&#34; alt=&#34;image-20210410100812432&#34;&gt;&lt;/p&gt;
 &lt;p&gt;防范：crontab 任务千万不要写到 /etc/crontab 文件里。通过 crontab -e 去创建，让他写到默认的 /var/spool/cron 下；创建任务时，避免使用 root 去创建任务，若用 root 创建任务，注意设置权限，避免 root 权限执行任务。&lt;/p&gt;
-</content>
-        <category term="Linux提权" />
-        <updated>2021-04-10T02:25:41.000Z</updated>
-    </entry>
-</feed>
+ ]]></description>
+        </item>
+    </channel>
+</rss>
