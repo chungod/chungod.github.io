@@ -2,7 +2,7 @@
 <rss version="2.0">
     <channel>
         <title>Go Forward • Posts by &#34;php危险函数&#34; tag</title>
-        <link>http://chungod.github.io</link>
+        <link>https://chungod.github.io</link>
         <description>欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</description>
         <language>zh-CN</language>
         <pubDate>Tue, 04 May 2021 12:34:41 +0800</pubDate>
@@ -17,9 +17,9 @@
         <category>溯源取证总结</category>
         <category>upload-labs通关记录</category>
         <item>
-            <guid isPermalink="true">http://chungod.github.io/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/</guid>
+            <guid isPermalink="true">https://chungod.github.io/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/</guid>
             <title>php危险函数</title>
-            <link>http://chungod.github.io/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/</link>
+            <link>https://chungod.github.io/2021/05/04/php%E5%8D%B1%E9%99%A9%E5%87%BD%E6%95%B0/</link>
             <category>php危险函数</category>
             <pubDate>Tue, 04 May 2021 12:34:41 +0800</pubDate>
             <description><![CDATA[ &lt;h2 id=&#34;php常见危险函数&#34;&gt;&lt;a class=&#34;markdownIt-Anchor&#34; href=&#34;#php常见危险函数&#34;&gt;#&lt;/a&gt; PHP 常见危险函数&lt;/h2&gt;
