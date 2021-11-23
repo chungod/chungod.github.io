@@ -1,0 +1,757 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#FFF">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="icon" type="image/ico" sizes="32x32" href="/images/favicon.ico">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+<link rel="alternate" type="application/rss+xml" title="Go Forward" href="https://chungod.github.io/rss.xml" />
+<link rel="alternate" type="application/atom+xml" title="Go Forward" href="https://chungod.github.io/atom.xml" />
+<link rel="alternate" type="application/json" title="Go Forward" href="https://chungod.github.io/feed.json" />
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Mulish:300,300italic,400,400italic,700,700italic%7CFredericka%20the%20Great:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20JP:300,300italic,400,400italic,700,700italic%7CNoto%20Serif%20SC:300,300italic,400,400italic,700,700italic%7CInconsolata:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="/css/app.css?v=0.2.5">
+
+  
+  <meta name="keywords" content="常用端口漏洞利用" />
+
+
+<link rel="canonical" href="https://chungod.github.io/2021/11/19/%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/">
+
+
+
+  <title>
+常用端口漏洞利用 |
+Go Forward = 人生像攀登一座山，而找寻出路，却是一种学习的过程，我们应当在这过程中，学习稳定、冷静，学习如何从慌乱中找到生机</title>
+<meta name="generator" content="Hexo 5.4.0"></head>
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div id="loading">
+    <div class="cat">
+      <div class="body"></div>
+      <div class="head">
+        <div class="face"></div>
+      </div>
+      <div class="foot">
+        <div class="tummy-end"></div>
+        <div class="bottom"></div>
+        <div class="legs left"></div>
+        <div class="legs right"></div>
+      </div>
+      <div class="paw">
+        <div class="hands left"></div>
+        <div class="hands right"></div>
+      </div>
+    </div>
+  </div>
+  <div id="container">
+    <header id="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="inner">
+        <div id="brand">
+          <div class="pjax">
+          
+  <h1 itemprop="name headline">常用端口漏洞利用
+  </h1>
+  
+<div class="meta">
+  <span class="item" title="创建时间：2021-11-19 12:00:00">
+    <span class="icon">
+      <i class="ic i-calendar"></i>
+    </span>
+    <span class="text">发表于</span>
+    <time itemprop="dateCreated datePublished" datetime="2021-11-19T12:00:00+08:00">2021-11-19</time>
+  </span>
+</div>
+
+
+          </div>
+        </div>
+        <nav id="nav">
+  <div class="inner">
+    <div class="toggle">
+      <div class="lines" aria-label="切换导航栏">
+        <span class="line"></span>
+        <span class="line"></span>
+        <span class="line"></span>
+      </div>
+    </div>
+    <ul class="menu">
+      <li class="item title"><a href="/" rel="start">Go Forward</a></li>
+    </ul>
+    <ul class="right">
+      <li class="item theme">
+        <i class="ic i-sun"></i>
+      </li>
+      <li class="item search">
+        <i class="ic i-search"></i>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+      </div>
+      <div id="imgs" class="pjax">
+        <ul>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1giciuja1j1j20zk0m8kjl.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gicli9lfebj20zk0m84qp.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipesrnqv3j20zk0m8ava.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipeuibk9fj20zk0m8ay2.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipey84bjtj20zk0m8hdt.jpg"></li>
+          <li class="item" data-background-image="https://tva3.sinaimg.cn/large/6833939bly1gipew8gmvyj20zk0m87wh.jpg"></li>
+        </ul>
+      </div>
+    </header>
+    <div id="waves">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+        <defs>
+          <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+        </defs>
+        <g class="parallax">
+          <use xlink:href="#gentle-wave" x="48" y="0" />
+          <use xlink:href="#gentle-wave" x="48" y="3" />
+          <use xlink:href="#gentle-wave" x="48" y="5" />
+          <use xlink:href="#gentle-wave" x="48" y="7" />
+        </g>
+      </svg>
+    </div>
+    <main>
+      <div class="inner">
+        <div id="main" class="pjax">
+          
+  <div class="article wrap">
+    
+<div class="breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
+<i class="ic i-home"></i>
+<span><a href="/">首页</a></span>
+</div>
+
+    <article itemscope itemtype="http://schema.org/Article" class="post block" lang="zh-CN">
+  <link itemprop="mainEntityOfPage" href="https://chungod.github.io/2021/11/19/%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/">
+
+  <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="image" content="/images/avatar.jpg">
+    <meta itemprop="name" content="chun">
+    <meta itemprop="description" content="人生像攀登一座山，而找寻出路，却是一种学习的过程，我们应当在这过程中，学习稳定、冷静，学习如何从慌乱中找到生机, 欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷">
+  </span>
+
+  <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Go Forward">
+  </span>
+
+  <div class="body md" itemprop="articleBody">
+    
+
+    <h4 id="常用端口漏洞利用总结"><a class="markdownIt-Anchor" href="#常用端口漏洞利用总结">#</a> 常用端口漏洞利用总结</h4>
+<p>漏洞入侵</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">端口</th>
+<th style="text-align:center">服务</th>
+<th style="text-align:center">入侵方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">21</td>
+<td style="text-align:center">ftp/tftp/vsftpd 文件传输协议</td>
+<td style="text-align:center">爆破 / 嗅探 / 溢出 / 后门</td>
+</tr>
+<tr>
+<td style="text-align:center">22</td>
+<td style="text-align:center">ssh 远程连接</td>
+<td style="text-align:center">爆破 /openssh 漏洞</td>
+</tr>
+<tr>
+<td style="text-align:center">23</td>
+<td style="text-align:center">Telnet 远程连接</td>
+<td style="text-align:center">爆破 / 嗅探 / 弱口令</td>
+</tr>
+<tr>
+<td style="text-align:center">25</td>
+<td style="text-align:center">SMTP 邮件服务</td>
+<td style="text-align:center">邮件伪造</td>
+</tr>
+<tr>
+<td style="text-align:center">53</td>
+<td style="text-align:center">DNS 域名解析系统</td>
+<td style="text-align:center">域传送 / 劫持 / 缓存投毒 / 欺骗</td>
+</tr>
+<tr>
+<td style="text-align:center">67/68</td>
+<td style="text-align:center">dhcp 服务</td>
+<td style="text-align:center">劫持 / 欺骗</td>
+</tr>
+<tr>
+<td style="text-align:center">110</td>
+<td style="text-align:center">pop3</td>
+<td style="text-align:center">爆破 / 嗅探</td>
+</tr>
+<tr>
+<td style="text-align:center">139</td>
+<td style="text-align:center">Samba 服务</td>
+<td style="text-align:center">爆破 / 未授权访问 / 远程命令执行</td>
+</tr>
+<tr>
+<td style="text-align:center">143</td>
+<td style="text-align:center">Imap 协议</td>
+<td style="text-align:center">爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">161</td>
+<td style="text-align:center">SNMP 协议</td>
+<td style="text-align:center">爆破 / 搜集目标内网信息</td>
+</tr>
+<tr>
+<td style="text-align:center">389</td>
+<td style="text-align:center">Ldap 目录访问协议</td>
+<td style="text-align:center">注入 / 未授权访问 / 弱口令</td>
+</tr>
+<tr>
+<td style="text-align:center">445</td>
+<td style="text-align:center">smb</td>
+<td style="text-align:center">ms17-010 / 端口溢出</td>
+</tr>
+<tr>
+<td style="text-align:center">512/513/514</td>
+<td style="text-align:center">Linux Rexec 服务</td>
+<td style="text-align:center">爆破 / Rlogin 登陆</td>
+</tr>
+<tr>
+<td style="text-align:center">873</td>
+<td style="text-align:center">Rsync 服务</td>
+<td style="text-align:center">文件上传 / 未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">1080</td>
+<td style="text-align:center">socket</td>
+<td style="text-align:center">爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">1352</td>
+<td style="text-align:center">Lotus domino 邮件服务</td>
+<td style="text-align:center">爆破 / 信息泄漏</td>
+</tr>
+<tr>
+<td style="text-align:center">1433</td>
+<td style="text-align:center">mssql</td>
+<td style="text-align:center">爆破 / 注入 / SA 弱口令</td>
+</tr>
+<tr>
+<td style="text-align:center">1521</td>
+<td style="text-align:center">oracle</td>
+<td style="text-align:center">爆破 / 注入 / TNS 爆破 / 反弹 shell</td>
+</tr>
+<tr>
+<td style="text-align:center">2049</td>
+<td style="text-align:center">Nfs 服务</td>
+<td style="text-align:center">配置不当</td>
+</tr>
+<tr>
+<td style="text-align:center">2181</td>
+<td style="text-align:center">zookeeper 服务</td>
+<td style="text-align:center">未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">2375</td>
+<td style="text-align:center">docker remote api</td>
+<td style="text-align:center">未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">3306</td>
+<td style="text-align:center">mysql</td>
+<td style="text-align:center">爆破 / 注入</td>
+</tr>
+<tr>
+<td style="text-align:center">3389</td>
+<td style="text-align:center">Rdp 远程桌面链接</td>
+<td style="text-align:center">爆破 /shift 后门</td>
+</tr>
+<tr>
+<td style="text-align:center">4848</td>
+<td style="text-align:center">GlassFish 控制台</td>
+<td style="text-align:center">爆破 / 认证绕过</td>
+</tr>
+<tr>
+<td style="text-align:center">5000</td>
+<td style="text-align:center">sybase/DB2 数据库</td>
+<td style="text-align:center">爆破 / 注入 / 提权</td>
+</tr>
+<tr>
+<td style="text-align:center">5432</td>
+<td style="text-align:center">postgresql</td>
+<td style="text-align:center">爆破 / 注入 / 缓冲区溢出</td>
+</tr>
+<tr>
+<td style="text-align:center">5632</td>
+<td style="text-align:center">pcanywhere 服务</td>
+<td style="text-align:center">抓密码 / 代码执行</td>
+</tr>
+<tr>
+<td style="text-align:center">5900</td>
+<td style="text-align:center">vnc</td>
+<td style="text-align:center">爆破 / 认证绕过</td>
+</tr>
+<tr>
+<td style="text-align:center">6379</td>
+<td style="text-align:center">Redis 数据库</td>
+<td style="text-align:center">未授权访问 / 爆破</td>
+</tr>
+<tr>
+<td style="text-align:center">7001/7002</td>
+<td style="text-align:center">weblogic</td>
+<td style="text-align:center">java 反序列化 / 控制台弱口令</td>
+</tr>
+<tr>
+<td style="text-align:center">80/443</td>
+<td style="text-align:center">http/https</td>
+<td style="text-align:center">web 应用漏洞 / 心脏滴血</td>
+</tr>
+<tr>
+<td style="text-align:center">8069</td>
+<td style="text-align:center">zabbix 服务</td>
+<td style="text-align:center">远程命令执行 / 注入</td>
+</tr>
+<tr>
+<td style="text-align:center">8161</td>
+<td style="text-align:center">activemq</td>
+<td style="text-align:center">弱口令 / 写文件</td>
+</tr>
+<tr>
+<td style="text-align:center">8080/8089</td>
+<td style="text-align:center">Jboss/Tomcat/Resin</td>
+<td style="text-align:center">爆破 / PUT 文件上传 / 反序列化</td>
+</tr>
+<tr>
+<td style="text-align:center">8083/8086</td>
+<td style="text-align:center">influxDB</td>
+<td style="text-align:center">未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">9000</td>
+<td style="text-align:center">fastcgi</td>
+<td style="text-align:center">远程命令执行</td>
+</tr>
+<tr>
+<td style="text-align:center">9090</td>
+<td style="text-align:center">Websphere 控制台</td>
+<td style="text-align:center">爆破 /java 反序列化 / 弱口令</td>
+</tr>
+<tr>
+<td style="text-align:center">9200/9300</td>
+<td style="text-align:center">elasticsearch</td>
+<td style="text-align:center">远程代码执行</td>
+</tr>
+<tr>
+<td style="text-align:center">11211</td>
+<td style="text-align:center">memcached</td>
+<td style="text-align:center">未授权访问</td>
+</tr>
+<tr>
+<td style="text-align:center">27017/27018</td>
+<td style="text-align:center">mongodb</td>
+<td style="text-align:center">未授权访问 / 爆破</td>
+</tr>
+</tbody>
+</table>
+<h5 id="21端口渗透剖析ftp"><a class="markdownIt-Anchor" href="#21端口渗透剖析ftp">#</a>  <code>21端口渗透剖析</code>  (FTP)</h5>
+<p>FTP 通常用作对远程服务器进行管理，典型应用就是对 web 系统进行管理。一旦 FTP 密码泄露就直接威胁 web 系统安全，甚至黑客通过提权可以直接控制服务器。这里剖析渗透 FTP 服务器的几种方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）基础爆破：ftp爆破工具很多，这里我推owasp的Bruter,hydra以及msf中的ftp爆破模块。``（2) ftp匿名访问：用户名：anonymous 密码：为空或者任意</span><br><span class="line">（3）后门vsftpd ：version 2到2.3.4存在后门漏洞，攻击者可以通过该漏洞获取root权限</span><br><span class="line">（4）嗅探：ftp使用明文传输技术（但是嗅探给予局域网并需要欺骗或监听网关）,使用Cain进行渗透。（5）ftp远程代码溢出 （proftpd 1.3.3c） （https://blog.csdn.net/weixin_42214273/article/details/82892282）</span><br><span class="line">（6）ftp跳转攻击</span><br></pre></td></tr></table></figure>
+<h5 id="22端口渗透剖析ssh"><a class="markdownIt-Anchor" href="#22端口渗透剖析ssh">#</a>  <code>22端口渗透剖析</code>  (SSH)</h5>
+<p>SSH 是协议，通常使用 OpenSSH 软件实现协议应用。SSH 为 Secure Shell 的缩写，由 IETF 的网络工作小组（Network Working Group）所制定；SSH 为建立在应用层和传输层基础上的安全协议。SSH 是目前较可靠，专为远程登录会话和其它网络服务提供安全性的协议。利用 SSH 协议可以有效防止远程管理过程中的信息泄露问题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）弱口令，可使用工具hydra，msf中的ssh爆破模块,也可以直接利用模块sshexec直接利用</span><br><span class="line">（2）防火墙SSH后门。（https://www.secpulse.com/archives/69093.html）</span><br><span class="line">（3）28退格 OpenSSL</span><br><span class="line">（4）openssh 用户枚举 CVE-2018-15473。（https://www.anquanke.com/post/id/157607）</span><br></pre></td></tr></table></figure>
+<h5 id="23端口渗透剖析telnet"><a class="markdownIt-Anchor" href="#23端口渗透剖析telnet">#</a>  <code>23端口渗透剖析</code>  (TELNET)</h5>
+<p>telnet 是一种旧的远程管理方式，使用 telnet 工具登录系统过程中，网络上传输的用户和密码都是以明文方式传送的，黑客可使用嗅探技术截获到此类密码。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）暴力破解技术是常用的技术，使用hydra,或者msf中telnet模块对其进行破解。</span><br><span class="line">（2）在linux系统中一般采用SSH进行远程访问，传输的敏感数据都是经过加密的。而对于windows下的telnet来说是脆弱的，因为默认没有经过任何加密就在网络中进行传输。使用cain等嗅探工具可轻松截获远程登录密码。</span><br></pre></td></tr></table></figure>
+<h5 id="25465端口渗透剖析smtp"><a class="markdownIt-Anchor" href="#25465端口渗透剖析smtp">#</a>  <code>25/465端口渗透剖析</code>  (SMTP)</h5>
+<p>smtp：邮件协议，在 linux 中默认开启这个服务，可以向对方发送钓鱼邮件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">默认端口：25（smtp）、465（smtps）</span><br><span class="line">（1）爆破：弱口令</span><br><span class="line">（2）未授权访问</span><br></pre></td></tr></table></figure>
+<h5 id="53端口渗透剖析dns"><a class="markdownIt-Anchor" href="#53端口渗透剖析dns">#</a>  <code>53端口渗透剖析</code>  (DNS)</h5>
+<p>53 端口是 DNS 域名服务器的通信端口，通常用于域名解析。也是网络中非常关键的服务器之一。这类服务器容易受到攻击。对于此端口的渗透，一般有三种方式。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）使用DNS远程溢出漏洞直接对其主机进行溢出攻击，成功后可直接获得系统权限。（https://www.seebug.org/vuldb/ssvid-96718）</span><br><span class="line">（2）使用DNS欺骗攻击，可对DNS域名服务器进行欺骗，如果黑客再配合网页木马进行挂马攻击，无疑是一种杀伤力很强的攻击，黑客可不费吹灰之力就控制内网的大部分主机。这也是内网渗透惯用的技法之一。（https://baijiahao.baidu.com/s?id=1577362432987749706&amp;wfr=spider&amp;for=pc）</span><br><span class="line">（3）拒绝服务攻击，利用拒绝服务攻击可快速的导致目标服务器运行缓慢，甚至网络瘫痪。如果使用拒绝服务攻击其DNS服务器。将导致用该服务器进行域名解析的用户无法正常上网。（http://www.edu.cn/xxh/fei/zxz/201503/t20150305_1235269.shtml）</span><br><span class="line">（4）DNS劫持 （https://blog.csdn.net/qq_32447301/article/details/77542474）</span><br></pre></td></tr></table></figure>
+<h5 id="80端口渗透剖析http"><a class="markdownIt-Anchor" href="#80端口渗透剖析http">#</a>  <code>80端口渗透剖析</code>  (HTTP)</h5>
+<p>80 端口通常提供 web 服务。目前黑客对 80 端口的攻击典型是采用<strong> SQL 注入</strong>的攻击方法，脚本渗透技术也是一项综合性极高的 web 渗透技术，同时脚本渗透技术对 80 端口也构成严重的威胁。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">（1）对于windows2000的IIS5.0版本，黑客使用远程溢出直接对远程主机进行溢出攻击，成功后直接获得系统权限。</span><br><span class="line">（2）对于windows2000中IIS5.0版本，黑客也尝试利用‘Microsoft IISCGI’文件名错误解码漏洞攻击。使用X-SCAN可直接探测到IIS漏洞。</span><br><span class="line">（3）IIS写权限漏洞是由于IIS配置不当造成的安全问题，攻击者可向存在此类漏洞的服务器上传恶意代码，比如上传脚本木马扩大控制权限。</span><br><span class="line">（4）普通的http封包是没有经过加密就在网络中传输的，这样就可通过嗅探类工具截取到敏感的数据。如使用Cain工具完成此类渗透。</span><br><span class="line">（5）80端口的攻击，更多的是采用脚本渗透技术，利用web应用程序的漏洞进行渗透是目前很流行的攻击方式。</span><br><span class="line">（6）对于渗透只开放80端口的服务器来说，难度很大。利用端口复用工具可解决此类技术难题。</span><br><span class="line">（7）CC攻击效果不及DDOS效果明显，但是对于攻击一些小型web站点还是比较有用的。CC攻击可使目标站点运行缓慢，页面无法打开，有时还会爆出web程序的绝对路径。</span><br><span class="line">（8）CVE-2017-7269 IIS远程代码执行</span><br></pre></td></tr></table></figure>
+<h5 id="139445端口渗透剖析smb"><a class="markdownIt-Anchor" href="#139445端口渗透剖析smb">#</a>  <code>139/445端口渗透剖析</code>  (SMB)</h5>
+<p>139 端口是为‘NetBIOS SessionService’提供的，主要用于提供 windows 文件和打印机共享以及 UNIX 中的 Samba 服务。445 端口也用于提供 windows 文件和打印机共享，在内网环境中使用的很广泛。这两个端口同样属于重点攻击对象，139/445 端口曾出现过许多严重级别的漏洞。下面剖析渗透此类端口的基本思路</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）对于开放139/445端口的主机，一般尝试利用溢出漏洞对远程主机进行溢出攻击，成功后直接获得系统权限。利用msf的ms-17010永恒之蓝或psexec（https://blog.csdn.net/qq_41880069/article/details/82908131）</span><br><span class="line">（2）对于攻击只开放445端口的主机，黑客一般使用工具‘MS06040’或‘MS08067’.可使用专用的445端口扫描器进行扫描。NS08067溢出工具对windows2003系统的溢出十分有效，工具基本使用参数在cmd下会有提示。（https://blog.csdn.net/god_7z1/article/details/6773652）</span><br><span class="line">（3）对于开放139/445端口的主机，黑客一般使用IPC$进行渗透。在没有使用特点的账户和密码进行空连接时，权限是最小的。获得系统特定账户和密码成为提升权限的关键了，比如获得administrator账户的口令。（https://blog.warhut.cn/dmbj/145.html）</span><br><span class="line">（4）对于开放139/445端口的主机，可利用共享获取敏感信息，这也是内网渗透中收集信息的基本途径。</span><br></pre></td></tr></table></figure>
+<h5 id="1433端口渗透剖析sqlserver"><a class="markdownIt-Anchor" href="#1433端口渗透剖析sqlserver">#</a>  <code>1433端口渗透剖析</code>  (SQLServer)</h5>
+<p>1433 是 SQLServer 默认的端口，SQL Server 服务使用两个端口：tcp-1433、UDP-1434. 其中 1433 用于供 SQLServer 对外提供服务，1434 用于向请求者返回 SQLServer 使用了哪些 TCP/IP 端口。1433 端口通常遭到黑客的攻击，而且攻击的方式层出不穷。最严重的莫过于<strong>远程溢出漏洞</strong>了，如由于 SQL 注射攻击的兴起，各类数据库时刻面临着安全威胁。利用 SQL 注射技术对数据库进行渗透是目前比较流行的攻击方式，此类技术属于脚本渗透技术。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">（1）对于开放1433端口的SQL Server2000的数据库服务器，黑客尝试使用远程溢出漏洞对主机进行溢出测试，成功后直接获得系统权限。（https://blog.csdn.net/gxj022/article/details/4593015）</span><br><span class="line">（2）暴力破解技术是一项经典的技术。一般破解的对象都是SA用户。通过字典破解的方式很快破解出SA的密码。（https://blog.csdn.net/kali_linux/article/details/50499576） 可利用模块mssql</span><br><span class="line">（3）嗅探技术同样能嗅探到SQL Server的登录密码。</span><br><span class="line">（4）由于脚本程序编写的不严密，例如，程序员对参数过滤不严等，这都会造成严重的注射漏洞。通过SQL注射可间接性的对数据库服务器进行渗透，通过调用一些存储过程执行系统命令。可以使用SQL综合利用工具完成。</span><br></pre></td></tr></table></figure>
+<h5 id="1521端口渗透剖析oracle"><a class="markdownIt-Anchor" href="#1521端口渗透剖析oracle">#</a>  <code>1521端口渗透剖析</code>  (Oracle)</h5>
+<p>1521 是大型数据库 Oracle 的默认监听端口，平时大家接触的比较多的是 Access，MSSQL 以及 MYSQL 这三种数据库。一般大型站点才会部署这种比较昂贵的数据库系统。对于渗透这种比较复杂的数据库系统，黑客的思路如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）Oracle拥有非常多的默认用户名和密码，为了获得数据库系统的访问权限，破解数据库系统用户以及密码是黑客必须攻破的一道安全防线。</span><br><span class="line">（2）SQL注射同样对Oracle十分有效，通过注射可获得数据库的敏感信息，包括管理员密码等。</span><br><span class="line">（3）在注入点直接创建java，执行系统命令(https://www.leiphone.com/news/201711/JjzXFp46zEPMvJod.html)</span><br></pre></td></tr></table></figure>
+<h5 id="2049端口渗透剖析nfs"><a class="markdownIt-Anchor" href="#2049端口渗透剖析nfs">#</a>  <code>2049端口渗透剖析</code>  (NFS)</h5>
+<p>NFS（Network File System）即网络文件系统，是 FreeBSD 支持的文件系统中的一种，它允许网络中的计算机之间通过 TCP/IP 网络共享资源。在 NFS 的应用中，本地 NFS 的客户端应用可以透明地读写位于远端 NFS 服务器上的文件，就像访问本地文件一样。如今 NFS 具备了防止被利用导出文件夹的功能，但遗留系统中的 NFS 服务配置不当，则仍可能遭到恶意攻击者的利用。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">未授权访问。（https://www.freebuf.com/articles/network/159468.html）      (https://www.hackliu.com/?p=426)</span><br></pre></td></tr></table></figure>
+<h5 id="3306端口渗透剖析mysql"><a class="markdownIt-Anchor" href="#3306端口渗透剖析mysql">#</a>  <code>3306端口渗透剖析</code>  (MYSQL)</h5>
+<p>3306 是 MYSQL 数据库默认的监听端口，通常部署在中型 web 系统中。在国内 LAMP 的配置是非常流行的，对于 php+mysql 构架的攻击也是属于比较热门的话题。mysql 数据库允许用户使用自定义函数功能，这使得黑客可编写恶意的自定义函数对服务器进行渗透，最后取得服务器最高权限。对于 3306 端口的渗透:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">（1）弱口令：由于管理者安全意识淡薄，通常管理密码设置过于简单，甚至为空口令。使用破解软件很容易破解此类密码，利用破解的密码登录远程mysql数据库，上传构造的恶意UDF自定义函数代码进行注册，通过调用注册的恶意函数执行系统命令。或者向web目录导出恶意的脚本程序，以控制整个web系统。</span><br><span class="line">（2）功能强大的‘cain’同样支持对3306端口的嗅探，同时嗅探也是渗透思路的一种。</span><br><span class="line">（3）SQL注入同样对mysql数据库威胁巨大，不仅可以获取数据库的敏感信息，还可使用load_file()函数读取系统的敏感配置文件或者从web数据库链接文件中获得root口令等，导出恶意代码到指定路径等。</span><br></pre></td></tr></table></figure>
+<h5 id="3389端口渗透剖析rdp"><a class="markdownIt-Anchor" href="#3389端口渗透剖析rdp">#</a>  <code>3389端口渗透剖析</code>  (RDP)</h5>
+<p>3389 是 windows 远程桌面服务默认监听的端口，管理员通过远程桌面对服务器进行维护，这给管理工作带来的极大的方便。通常此端口也是黑客们较为感兴趣的端口之一，利用它可对远程服务器进行控制，而且不需要另外安装额外的软件，实现方法比较简单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">（1）对于windows2000的旧系统版本，使用‘输入法漏洞’进行渗透。</span><br><span class="line">（2）cain是一款超级的渗透工具，同样支持对3389端口的嗅探。</span><br><span class="line">（3）Shift粘滞键后门：5次shift后门</span><br><span class="line">（4）社会工程学通常是最可怕的攻击技术，如果管理者的一切习惯和规律被黑客摸透的话，那么他管理的网络系统会因为他的弱点被渗透。</span><br><span class="line">（5）爆破3389端口。这里还是推荐使用hydra爆破工具。</span><br><span class="line">（6）ms12_020死亡蓝屏攻击。（https://www.cnblogs.com/R-Hacker/p/9178066.html）</span><br></pre></td></tr></table></figure>
+<h5 id="4899端口渗透剖析radmini远控"><a class="markdownIt-Anchor" href="#4899端口渗透剖析radmini远控">#</a>  <code>4899端口渗透剖析</code>  (radmini 远控)</h5>
+<p>4899 端口是<strong> remoteadministrator</strong> 远程控制软件默认监听的端口，也就是平时常说的 radmini 影子。radmini 目前支持 TCP/IP 协议，应用十分广泛，在很多服务器上都会看到该款软件的影子。对于此软件的渗透，思路如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）radmini同样存在不少弱口令的主机，通过专用扫描器可探测到此类存在漏洞的主机。</span><br><span class="line">（2）radmini远控的连接密码和端口都是写入到注册表系统中的，通过使用webshell注册表读取功能可读取radmini在注册表的各项键值内容，从而破解加密的密码散列。</span><br></pre></td></tr></table></figure>
+<h5 id="5432端口渗透剖析postgresql"><a class="markdownIt-Anchor" href="#5432端口渗透剖析postgresql">#</a>  <code>5432端口渗透剖析</code>  (PostgreSQL)</h5>
+<p>PostgreSQL 是一种特性非常齐全的自由软件的对象–关系型数据库管理系统，可以说是目前世界上最先进，功能最强大的自由数据库管理系统。包括 kali 系统中 msf 也使用这个数据库；浅谈 postgresql 数据库攻击技术 大部分关于它的攻击依旧是 sql 注入，所以注入才是数据库不变的话题。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）爆破：弱口令：postgres postgres</span><br><span class="line">（2）缓冲区溢出：CVE-2014-2669。（http://drops.xmd5.com/static/drops/tips-6449.html）（3）远程代码执行：CVE-2018-1058。（https://www.secpulse.com/archives/69153.html）</span><br></pre></td></tr></table></figure>
+<h5 id="5900端口渗透剖析vnc"><a class="markdownIt-Anchor" href="#5900端口渗透剖析vnc">#</a>  <code>5900端口渗透剖析</code>  (VNC)</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">（1）VNC软件存在密码验证绕过漏洞，此高危漏洞可以使得恶意攻击者不需要密码就可以登录到一个远程系统。</span><br><span class="line">（2）cain同样支持对VNC的嗅探，同时支持端口修改。</span><br><span class="line">（3）VNC的配置信息同样被写入注册表系统中，其中包括连接的密码和端口。利用webshell的注册表读取功能进行读取加密算法，然后破解。</span><br><span class="line">（4）VNC拒绝服务攻击（CVE-2015-5239）。（http://blogs.360.cn/post/vnc%E6%8B%92%E7%BB%9D%E6%9C%8D%E5%8A%A1%E6%BC%8F%E6%B4%9Ecve-2015-5239%E5%88%86%E6%9E%90.html）</span><br><span class="line">（5）VNC权限提升（CVE-2013-6886）。</span><br></pre></td></tr></table></figure>
+<h5 id="6379端口渗透剖析redis"><a class="markdownIt-Anchor" href="#6379端口渗透剖析redis">#</a>  <code>6379端口渗透剖析</code>  (Redis)</h5>
+<p>Redis 是一个开源的使用 c 语言写的，支持网络、可基于内存亦可持久化的日志型、key-value 数据库。关于这个数据库这两年还是很火的，暴露出来的问题也很多。特别是前段时间暴露的未授权访问。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）爆破：弱口令</span><br><span class="line">（2）未授权访问+配合ssh key提权。（http://www.alloyteam.com/2017/07/12910/）</span><br></pre></td></tr></table></figure>
+<h5 id="70017002端口渗透剖析weblogic"><a class="markdownIt-Anchor" href="#70017002端口渗透剖析weblogic">#</a>  <code>7001/7002端口渗透剖析</code>  (Weblogic)</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">（1）弱口令、爆破，弱密码一般为weblogic/Oracle@123 or weblogic</span><br><span class="line">（2）管理后台部署 war 后门</span><br><span class="line">（3）SSRF</span><br><span class="line">（4）反序列化漏洞</span><br><span class="line">（5）weblogic_uac</span><br><span class="line">(https://github.com/vulhub/vulhub/tree/master/weblogic/ssrf)(https://bbs.pediy.com/thread-224954.htm)</span><br><span class="line">(https://fuping.site/2017/06/05/Weblogic-Vulnerability-Verification/)(https://blog.gdssecurity.com/labs/2015/3/30/weblogic-ssrf-and-xss-cve-2014-4241-cve-2014-4210-cve-2014-4.html)</span><br></pre></td></tr></table></figure>
+<h5 id="27017端口渗透剖析mongodbnosql数据库"><a class="markdownIt-Anchor" href="#27017端口渗透剖析mongodbnosql数据库">#</a>  <code>27017端口渗透剖析</code>  (MongoDB,NoSQL 数据库)</h5>
+<p>MongoDB，NoSQL 数据库；攻击方法与其他数据库类似</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（1）爆破：弱口令</span><br><span class="line">（2）未授权访问；（http://www.cnblogs.com/LittleHann/p/6252421.html）（http://www.tiejiang.org/19157.html)</span><br></pre></td></tr></table></figure>
+
+      <div class="tags">
+          <a href="/tags/%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/" rel="tag"><i class="ic i-tag"></i> 常用端口漏洞利用</a>
+      </div>
+  </div>
+
+   <footer>
+
+    <div class="meta">
+  <span class="item">
+    <span class="icon">
+      <i class="ic i-calendar-check"></i>
+    </span>
+    <span class="text">更新于</span>
+    <time title="修改时间：2021-11-23 19:33:03" itemprop="dateModified" datetime="2021-11-23T19:33:03+08:00">2021-11-23</time>
+  </span>
+</div>
+
+      
+<div class="reward">
+  <button><i class="ic i-heartbeat"></i> 赞赏</button>
+  <p>请我喝[茶]~(￣▽￣)~*</p>
+  <div id="qr">
+      
+      <div>
+        <img data-src="/images/wechatpay.png" alt="chun 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div>
+        <img data-src="/images/alipay.jpg" alt="chun 支付宝">
+        <p>支付宝</p>
+      </div>
+  </div>
+</div>
+
+      
+
+<div id="copyright">
+<ul>
+  <li class="author">
+    <strong>本文作者： </strong>chun <i class="ic i-at"><em>@</em></i>Go Forward
+  </li>
+  <li class="link">
+    <strong>本文链接：</strong>
+    <a href="https://chungod.github.io/2021/11/19/%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/" title="常用端口漏洞利用">https://chungod.github.io/2021/11/19/常用端口漏洞利用总结/</a>
+  </li>
+  <li class="license">
+    <strong>版权声明： </strong>本站所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</span> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+  </footer>
+
+</article>
+
+  </div>
+  
+
+<div class="post-nav">
+    <div class="item left">
+      
+
+  <a href="/2021/11/11/%E6%BC%8F%E6%B4%9E%E5%8F%8A%E6%B8%97%E9%80%8F%E8%81%94%E7%B3%BB%E5%B9%B3%E5%8F%B0/" itemprop="url" rel="prev" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gipeudstjqj20zk0m8k3r.jpg" title="未命名">
+  <span class="type">上一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>未命名</h3>
+  </a>
+
+    </div>
+    <div class="item right">
+      
+
+  <a href="/2021/11/23/CH4INRULZ%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B0/" itemprop="url" rel="next" data-background-image="https:&#x2F;&#x2F;tva3.sinaimg.cn&#x2F;mw690&#x2F;6833939bly1gicliierfjj20zk0m8npd.jpg" title="CH4INRULZ靶机笔记">
+  <span class="type">下一篇</span>
+  <span class="category"><i class="ic i-flag"></i> </span>
+  <h3>CH4INRULZ靶机笔记</h3>
+  </a>
+
+    </div>
+</div>
+
+  
+  <div class="wrap" id="comments"></div>
+
+
+        </div>
+        <div id="sidebar">
+          
+
+<div class="inner">
+
+  <div class="panels">
+    <div class="inner">
+      <div class="contents panel pjax" data-title="文章目录">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93"><span class="toc-number">1.</span> <span class="toc-text"> 常用端口漏洞利用总结</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#21%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90ftp"><span class="toc-number">1.1.</span> <span class="toc-text">  21端口渗透剖析  (FTP)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#22%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90ssh"><span class="toc-number">1.2.</span> <span class="toc-text">  22端口渗透剖析  (SSH)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#23%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90telnet"><span class="toc-number">1.3.</span> <span class="toc-text">  23端口渗透剖析  (TELNET)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#25465%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90smtp"><span class="toc-number">1.4.</span> <span class="toc-text">  25&#x2F;465端口渗透剖析  (SMTP)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#53%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90dns"><span class="toc-number">1.5.</span> <span class="toc-text">  53端口渗透剖析  (DNS)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#80%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90http"><span class="toc-number">1.6.</span> <span class="toc-text">  80端口渗透剖析  (HTTP)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#139445%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90smb"><span class="toc-number">1.7.</span> <span class="toc-text">  139&#x2F;445端口渗透剖析  (SMB)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1433%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90sqlserver"><span class="toc-number">1.8.</span> <span class="toc-text">  1433端口渗透剖析  (SQLServer)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1521%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90oracle"><span class="toc-number">1.9.</span> <span class="toc-text">  1521端口渗透剖析  (Oracle)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2049%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90nfs"><span class="toc-number">1.10.</span> <span class="toc-text">  2049端口渗透剖析  (NFS)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3306%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90mysql"><span class="toc-number">1.11.</span> <span class="toc-text">  3306端口渗透剖析  (MYSQL)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3389%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90rdp"><span class="toc-number">1.12.</span> <span class="toc-text">  3389端口渗透剖析  (RDP)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4899%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90radmini%E8%BF%9C%E6%8E%A7"><span class="toc-number">1.13.</span> <span class="toc-text">  4899端口渗透剖析  (radmini 远控)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5432%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90postgresql"><span class="toc-number">1.14.</span> <span class="toc-text">  5432端口渗透剖析  (PostgreSQL)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5900%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90vnc"><span class="toc-number">1.15.</span> <span class="toc-text">  5900端口渗透剖析  (VNC)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6379%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90redis"><span class="toc-number">1.16.</span> <span class="toc-text">  6379端口渗透剖析  (Redis)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#70017002%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90weblogic"><span class="toc-number">1.17.</span> <span class="toc-text">  7001&#x2F;7002端口渗透剖析  (Weblogic)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#27017%E7%AB%AF%E5%8F%A3%E6%B8%97%E9%80%8F%E5%89%96%E6%9E%90mongodbnosql%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">1.18.</span> <span class="toc-text">  27017端口渗透剖析  (MongoDB,NoSQL 数据库)</span></a></li></ol></li></ol>
+      </div>
+      <div class="related panel pjax" data-title="系列文章">
+      </div>
+      <div class="overview panel" data-title="站点概览">
+        <div class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="image" itemprop="image" alt="chun"
+      data-src="/images/avatar.jpg">
+  <p class="name" itemprop="name">chun</p>
+  <div class="description" itemprop="description">欢迎来到我的博客(*^﹏^*),本人为新人,你可以阅读我的学习笔记并提出独到的见解~我们将互相学习,共同进步,望大佬们勿喷</div>
+</div>
+
+<nav class="state">
+    <div class="item posts">
+      <a href="/archives/">
+        <span class="count">16</span>
+        <span class="name">文章</span>
+      </a>
+    </div>
+    <div class="item tags">
+      <a href="/tags/">
+        <span class="count">15</span>
+        <span class="name">标签</span>
+      </a>
+    </div>
+</nav>
+
+<div class="social">
+      <span class="exturl item github" data-url="aHR0cHM6Ly9naXRodWIuY29tL3lvdXJuYW1l" title="https:&#x2F;&#x2F;github.com&#x2F;yourname"><i class="ic i-github"></i></span>
+      <span class="exturl item twitter" data-url="aHR0cHM6Ly90d2l0dGVyLmNvbS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;twitter.com&#x2F;yourname"><i class="ic i-twitter"></i></span>
+      <span class="exturl item zhihu" data-url="aHR0cHM6Ly93d3cuemhpaHUuY29tL3Blb3BsZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;yourname"><i class="ic i-zhihu"></i></span>
+      <span class="exturl item music" data-url="aHR0cHM6Ly9tdXNpYy4xNjMuY29tLyMvdXNlci9ob21lP2lkPXlvdXJpZA==" title="https:&#x2F;&#x2F;music.163.com&#x2F;#&#x2F;user&#x2F;home?id&#x3D;yourid"><i class="ic i-cloud-music"></i></span>
+      <span class="exturl item weibo" data-url="aHR0cHM6Ly93ZWliby5jb20veW91cm5hbWU=" title="https:&#x2F;&#x2F;weibo.com&#x2F;yourname"><i class="ic i-weibo"></i></span>
+      <span class="exturl item about" data-url="aHR0cHM6Ly9hYm91dC5tZS95b3VybmFtZQ==" title="https:&#x2F;&#x2F;about.me&#x2F;yourname"><i class="ic i-address-card"></i></span>
+</div>
+
+<ul class="menu">
+  
+    
+  <li class="item">
+    <a href="/" rel="section"><i class="ic i-home"></i>首页</a>
+  </li>
+
+    
+  <li class="item">
+    <a href="/link/" rel="section"><i class="ic i-link"></i>links</a>
+  </li>
+
+
+</ul>
+
+      </div>
+    </div>
+  </div>
+
+  <ul id="quick">
+    <li class="prev pjax">
+        <a href="/2021/11/11/%E6%BC%8F%E6%B4%9E%E5%8F%8A%E6%B8%97%E9%80%8F%E8%81%94%E7%B3%BB%E5%B9%B3%E5%8F%B0/" rel="prev" title="上一篇"><i class="ic i-chevron-left"></i></a>
+    </li>
+    <li class="up"><i class="ic i-arrow-up"></i></li>
+    <li class="down"><i class="ic i-arrow-down"></i></li>
+    <li class="next pjax">
+        <a href="/2021/11/23/CH4INRULZ%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B0/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a>
+    </li>
+    <li class="percent"></li>
+  </ul>
+</div>
+
+
+        </div>
+        <div class="dimmer"></div>
+      </div>
+    </main>
+    <footer id="footer">
+      <div class="inner">
+        <div class="widgets">
+          
+<div class="rpost pjax">
+  <h2>随机文章</h2>
+  <ul>
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/08/18/Coablt%20strike%E6%80%BB%E7%BB%93/" title="Coablt strike总结">Coablt strike总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/" title="paramiko模块介绍">paramiko模块介绍</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/08/19/Gear_Of_War%E9%9D%B6%E5%9C%BA%E7%AC%94%E8%AE%B0/" title="Gear_Of_War靶场笔记">Gear_Of_War靶场笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/21/meterpreter%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E6%80%BB%E7%BB%93/" title="meterpreter学习笔记">meterpreter学习笔记</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/01/upload-labs%E9%80%9A%E5%85%B3%E8%AE%B0%E5%BD%95/" title="upload-labs通关记录">upload-labs通关记录</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/09/%E5%86%85%E5%AD%98%E5%8F%96%E8%AF%81/" title="内存取证">内存取证</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/05/05/%E6%BA%AF%E6%BA%90%E5%8F%96%E8%AF%81%E6%80%BB%E7%BB%93/" title="溯源取证总结">溯源取证总结</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/11/19/%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%BB%E7%BB%93/" title="常用端口漏洞利用">常用端口漏洞利用</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/11/11/%E6%BC%8F%E6%B4%9E%E5%8F%8A%E6%B8%97%E9%80%8F%E8%81%94%E7%B3%BB%E5%B9%B3%E5%8F%B0/" title="未命名">未命名</a></span>
+  </li>
+
+      
+  <li class="item">
+    
+<div class="breadcrumb">
+</div>
+
+    <span><a href="/2021/04/16/Windows%E5%86%85%E6%A0%B8%E6%8F%90%E6%9D%83/" title="Windows内核提权">Windows内核提权</a></span>
+  </li>
+
+  </ul>
+</div>
+<div>
+  <h2>最新评论</h2>
+  <ul class="leancloud-recent-comment"></ul>
+</div>
+
+        </div>
+        <div class="status">
+  <div class="copyright">
+    
+    &copy; 2010 – 
+    <span itemprop="copyrightYear">2021</span>
+    <span class="with-love">
+      <i class="ic i-sakura rotate"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">chun @ Go Forward</span>
+  </div>
+  <div class="count">
+    <span class="post-meta-item-icon">
+      <i class="ic i-chart-area"></i>
+    </span>
+    <span title="站点总字数">93k 字</span>
+
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="ic i-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:24</span>
+  </div>
+  <div class="powered-by">
+    基于 <span class="exturl" data-url="aHR0cHM6Ly9oZXhvLmlv">Hexo</span> & Theme.<span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2FtZWhpbWUvaGV4by10aGVtZS1zaG9rYQ==">Shoka</span>
+  </div>
+</div>
+
+      </div>
+    </footer>
+  </div>
+<script data-config type="text/javascript">
+  var LOCAL = {
+    path: '2021/11/19/常用端口漏洞利用总结/',
+    favicon: {
+      show: "（●´3｀●）やれやれだぜ",
+      hide: "(´Д｀)大変だ！"
+    },
+    search : {
+      placeholder: "文章搜索",
+      empty: "关于 「 ${query} 」，什么也没搜到",
+      stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    valine: true,fancybox: true,copyright: '复制成功，转载请遵守 <i class="ic i-creative-commons"></i>BY-NC-SA 协议。',
+    ignores : [
+      function(uri) {
+        return uri.includes('#');
+      },
+      function(uri) {
+        return new RegExp(LOCAL.path+"$").test(uri);
+      }
+    ]
+  };
+</script>
+
+<script src="https://cdn.polyfill.io/v2/polyfill.js"></script>
+
+<script src="//cdn.jsdelivr.net/combine/npm/pace-js@1.0.2/pace.min.js,npm/pjax@0.2.8/pjax.min.js,npm/whatwg-fetch@3.4.0/dist/fetch.umd.min.js,npm/animejs@3.2.0/lib/anime.min.js,npm/algoliasearch@4/dist/algoliasearch-lite.umd.js,npm/instantsearch.js@4/dist/instantsearch.production.min.js,npm/lozad@1/dist/lozad.min.js,npm/quicklink@2/dist/quicklink.umd.js"></script>
+
+<script src="/js/app.js?v=0.2.5"></script>
+
+
+
+
+</body>
+</html>

@@ -8,17 +8,19 @@
         <pubDate>Sun, 02 May 2021 19:54:29 +0800</pubDate>
         <lastBuildDate>Sun, 02 May 2021 19:54:29 +0800</lastBuildDate>
         <category>Chanakya靶场笔记</category>
+        <category>CH4INRULZ靶机笔记</category>
         <category>Coablt strike总结</category>
-        <category>Linux反弹shell多种姿态</category>
         <category>Gear_Of_War靶场笔记</category>
+        <category>Linux反弹shell多种姿态</category>
         <category>Linux提权笔记</category>
         <category>Windows内核提权</category>
-        <category>impacket脚本利用</category>
         <category>paramiko模块介绍</category>
+        <category>impacket脚本利用</category>
         <category>php危险函数</category>
         <category>内存取证</category>
         <category>meterpreter学习笔记</category>
         <category>溯源取证总结</category>
+        <category>常用端口漏洞利用</category>
         <category>upload-labs通关记录</category>
         <item>
             <guid isPermalink="true">https://chungod.github.io/2021/05/02/paramiko%E6%A8%A1%E5%9D%97%E4%BB%8B%E7%BB%8D/</guid>
